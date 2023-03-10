@@ -9,6 +9,7 @@ public class PlayerHealthIncrease : MonoBehaviour, IItem
     [TextArea(5, 5)]
     [SerializeField] string itemDescription;
     [SerializeField] Sprite itemSprite;
+    [SerializeField] int maxHealthIncrease;
     private Transform player;
 
     public string Itemname => itemName;
@@ -39,6 +40,7 @@ public class PlayerHealthIncrease : MonoBehaviour, IItem
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("GIVE PLAYER HEALTH");
+            collision.GetComponent<PlayerHealth>().IncreaseMaxHealth(maxHealthIncrease);
             Destroy(gameObject);
         }
     }

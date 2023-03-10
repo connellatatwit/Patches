@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] int maxHealth;
+    [SerializeField] int baseMaxHealth;
+    private int maxHealth;
     private int currentHealth;
 
     [SerializeField] Image hpBar;
 
     private void Start()
     {
-        currentHealth = maxHealth;
-        hpBar.fillAmount = (float)currentHealth / (float)maxHealth;
+        currentHealth = baseMaxHealth;
+        maxHealth = baseMaxHealth;
+        hpBar.fillAmount = (float)currentHealth / (float)baseMaxHealth;
     }
 
     public void TakeDamage(int amount)
@@ -26,6 +28,13 @@ public class PlayerHealth : MonoBehaviour
             Destroy(gameObject);
         }
 
+        hpBar.fillAmount = (float)currentHealth / (float)maxHealth;
+    }
+
+    public void IncreaseMaxHealth(int amount)
+    {
+        maxHealth += amount;
+        currentHealth += amount;
         hpBar.fillAmount = (float)currentHealth / (float)maxHealth;
     }
 }
