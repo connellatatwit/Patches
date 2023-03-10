@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3827811228261491009}
   - component: {fileID: 3827811228261491008}
+  - component: {fileID: 4215043217069280520}
+  - component: {fileID: 2041160261285688795}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -46,6 +48,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+--- !u!58 &4215043217069280520
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827811228261491010}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &2041160261285688795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3827811228261491010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dadf2bf1a519914a8ab82da4cb9aba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmg: 1
+  attackSpeedCd: 1
 --- !u!1 &3827811228933222306
 GameObject:
   m_ObjectHideFlags: 0
