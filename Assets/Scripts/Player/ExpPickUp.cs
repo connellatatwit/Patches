@@ -45,7 +45,6 @@ public class ExpPickUp : MonoBehaviour
                 GameManager.instance.LevelUp(false);
 
             neededExp = Mathf.RoundToInt(Mathf.Pow(1.08f, currentLevel) + (currentLevel-1)*2f + 2f);
-            Debug.Log("The needed exp for the level " + (currentLevel + 1) + "next is... " + neededExp);
         }
     }
 

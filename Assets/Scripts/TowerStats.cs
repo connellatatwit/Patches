@@ -16,12 +16,16 @@ public class TowerStats : MonoBehaviour
     private int currentUpgrade = 0;
     private int currentMaxUpgrades;
 
+    private float startTime; // Time the tower came to existance: Used to decide which tower to kill if they are the same
+
     public void InitStats()
     {
         currentDmg = baseDmg;
         currentRange = baseRange;
         attackCd = baseAttackCd;
         currentMaxUpgrades = baseMaxUpgrades;
+
+        startTime = Time.time;
     }
     public int Damage
     {
@@ -38,6 +42,10 @@ public class TowerStats : MonoBehaviour
     public float BulletSpeed
     {
         get { return bulletSpeed; }
+    }
+    public float StartTime
+    {
+        get { return startTime; }
     }
 
     public void IncreaseDamage(int amount)

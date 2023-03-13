@@ -15,11 +15,10 @@ public class Inventory : MonoBehaviour
         heldItems.Add(newTower);
         if(newTower.GetComponent<TowerStats>() != null)
         {
+            // Check if this is a new Tower or not
             if (!towers.Contains(newTower.GetComponent<TowerStats>()))
             {
-                newTower.GetComponent<TowerStats>().InitStats();
-                towers.Add(newTower.GetComponent<TowerStats>());
-                ApplyOldBuffs(newTower);
+                HandleNewTower(newTower);
             }
         }
     }
@@ -33,6 +32,18 @@ public class Inventory : MonoBehaviour
             return heldItems[heldItems.Count -1];
         else
             return null;
+    }
+    private void HandleNewTower(GameObject newTower)
+    {
+        // Initiate Stats
+        newTower.GetComponent<TowerStats>().InitStats();
+
+        // TODO: Check if it is the same name and level of any of the towers
+
+        // Catch old tower up to speed
+        ApplyOldBuffs(newTower);
+        //Add Tower to the family
+        towers.Add(newTower.GetComponent<TowerStats>());
     }
 
     public void AddStatToTurrets(PassiveStatItem passiveStatItem)

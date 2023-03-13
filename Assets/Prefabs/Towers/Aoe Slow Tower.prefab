@@ -178,7 +178,10 @@ MonoBehaviour:
   itemName: Speed Sign
   itemDescription: Slowsdoen enemies
   itemSprite: {fileID: 21300000, guid: 91e9ca978503f3f408bb33dca3188093, type: 3}
-  amountReduced: 0.77
+  slowAmount1: 0.77
+  slowAmount2: 0.5
+  dmg2: 0
+  atkCD2: 0
 --- !u!1 &8172460710391347978
 GameObject:
   m_ObjectHideFlags: 0

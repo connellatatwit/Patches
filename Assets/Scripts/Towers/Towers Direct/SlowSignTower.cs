@@ -10,7 +10,6 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
     [SerializeField] string itemDescription;
     [SerializeField] Sprite itemSprite;
     private int currentLevel = 1;
-    private float startTime;
 
     [Header("Level 1")]
     [SerializeField] float slowAmount1;
@@ -33,7 +32,8 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
 
     public Sprite ItemSprite => itemSprite;
 
-    public float StartTime => startTime;
+    public float StartTime => tS.StartTime;
+    public int Level => currentLevel;
 
     public void BeingHeld(bool held)
     {
@@ -42,7 +42,6 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
     private void Start()
     {
         tS = GetComponent<TowerStats>();
-        startTime = Time.time;
     }
     public void LevelUp()
     {

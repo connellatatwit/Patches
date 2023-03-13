@@ -6,5 +6,6 @@ public interface ITower
 {
     public void LevelUp();
     Transform transform { get; }
-    public float StartTime { get; }
+    string name { get; }
+    public int Level { get; }
 }

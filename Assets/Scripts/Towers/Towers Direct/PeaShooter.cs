@@ -11,7 +11,6 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     [SerializeField] string itemDescription;
     [SerializeField] Sprite itemSprite;
     private int currentLevel = 1;
-    private float startTime;
 
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform shootPos;
@@ -28,12 +27,12 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     public string ItemDescription => itemDescription;
 
     public Sprite ItemSprite => itemSprite;
-    public float StartTime => startTime;
+    public float StartTime => tS.StartTime;
+    public int Level => currentLevel;
 
     private void Start()
     {
         tS = GetComponent<TowerStats>();
-        startTime = Time.time;
     }
     public void LevelUp()
     {

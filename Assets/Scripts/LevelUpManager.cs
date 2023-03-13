@@ -63,13 +63,11 @@ public class LevelUpManager : MonoBehaviour
         // TODO Find out if the item is a tower or passive
         if (itemList[currentSelectedItem].GetComponent<ITower>() != null)
         {
-            Debug.Log("Tower picked"); 
             GameObject newItem = Instantiate(itemList[currentSelectedItem]);
             player.GetComponent<PickUpObject>().GiveItem(newItem);
         }
         else if(itemList[currentSelectedItem].GetComponent<PassiveStatItem>() != null)
         {
-            Debug.Log("Tower not picked");
             GameObject newItem = Instantiate(itemList[currentSelectedItem]);
             player.GetComponent<Inventory>().AddStatToTurrets(itemList[currentSelectedItem].GetComponent<PassiveStatItem>());
         }

@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     private int dmg;
     private float bulletSpeed;
 
-    private float deathTimer = 1f;
+    private float deathTimer = .5f;
     [SerializeField] LayerMask enemyLayer = (1 << 11);
 
     public void InitBullet(Transform target, int dmg, float bulletSpeed)
@@ -28,7 +28,6 @@ public class Bullet : MonoBehaviour
             deathTimer -= Time.deltaTime;
             if(deathTimer <= 0)
             {
-                Debug.Log("Failed to find target. bullet Died");
                 Destroy(gameObject);
             }
         }
