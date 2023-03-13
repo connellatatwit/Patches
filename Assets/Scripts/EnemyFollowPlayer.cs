@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class EnemyFollowPlayer : MonoBehaviour
 {
-    [SerializeField] float speed;
+    private EnemyStats eS;
     private Transform player;
+    [SerializeField] float minDist = .1f;
+    [SerializeField] float maxDist = .2f;
+
+    private Rigidbody2D rb;
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        rb = GetComponent<Rigidbody2D>();
+        eS = GetComponent<EnemyStats>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        Vector3 dir = player.position - transform.position;
+        rb.velocity = dir.normalized * eS.Speed() * Time.deltaTime;
     }
 }

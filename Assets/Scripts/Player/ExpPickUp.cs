@@ -37,7 +37,6 @@ public class ExpPickUp : MonoBehaviour
         {
             currentLevel++;
             currentExp = 0;
-            bool a5 = false;
             if(currentLevel % 5 == 0 || currentLevel == 1)
             {
                 GameManager.instance.LevelUp(true);

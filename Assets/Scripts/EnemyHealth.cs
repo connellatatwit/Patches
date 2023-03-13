@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int maxHealth;
-    private int currentHealth;
+    private EnemyStats eS;
     [SerializeField] GameObject expPrefab;
 
     private void Start()
     {
-        currentHealth = maxHealth;
+        eS = GetComponent<EnemyStats>();
     }
 
     public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
-        if(currentHealth <= 0)
+        eS.TakeDamage(amount);
+        if(eS.Health <= 0)
         {
             Die();
         }

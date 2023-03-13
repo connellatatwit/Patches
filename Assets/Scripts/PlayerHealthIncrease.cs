@@ -11,6 +11,7 @@ public class PlayerHealthIncrease : MonoBehaviour, IItem
     [SerializeField] Sprite itemSprite;
     [SerializeField] int maxHealthIncrease;
     private Transform player;
+    private bool beingHeld = false;
 
     public string Itemname => itemName;
 
@@ -43,5 +44,10 @@ public class PlayerHealthIncrease : MonoBehaviour, IItem
             collision.GetComponent<PlayerHealth>().IncreaseMaxHealth(maxHealthIncrease);
             Destroy(gameObject);
         }
+    }
+
+    public void BeingHeld(bool held)
+    {
+        beingHeld = held;
     }
 }

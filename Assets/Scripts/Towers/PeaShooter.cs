@@ -10,36 +10,36 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     [TextArea(5,5)]
     [SerializeField] string itemDescription;
     [SerializeField] Sprite itemSprite;
+    private int currentLevel = 1;
+    private float startTime;
 
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform shootPos;
+    private float attackTimer = 1f;
 
-    [Header("Stats")]
-    [SerializeField] float baseRange;
-    private float currentRange;
-    [SerializeField] int baseDmg;
-    private int currentDmg;
-    [SerializeField] float baseAttackCd;
-    private float attackCd;
-    private float attackTimer;
-    [SerializeField] float bulletSpeed;
+    private TowerStats tS;
 
     private LayerMask enemyLayer = (1 << 11);
+
+    private bool beingHeld = false;
 
     public string Itemname => itemName;
 
     public string ItemDescription => itemDescription;
 
     public Sprite ItemSprite => itemSprite;
-
+    public float StartTime => startTime;
 
     private void Start()
     {
-        currentDmg = baseDmg;
-        currentRange = baseRange;
-        attackCd = baseAttackCd;
-        attackTimer = attackCd;
+        tS = GetComponent<TowerStats>();
+        startTime = Time.time;
     }
+    public void LevelUp()
+    {
+
+    }
+
     private void Update()
     {
         attackTimer -= Time.deltaTime;
@@ -52,7 +52,7 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
                 if (CheckTarget())
                 {
                     // Shoot
-                    attackTimer = attackCd;
+                    attackTimer = tS.AttackCd;
                     Shoot();
                 }
             }
@@ -67,11 +67,11 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     void Shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().InitBullet(currentTarget.transform, currentDmg, bulletSpeed);
+        bullet.GetComponent<Bullet>().InitBullet(currentTarget.transform, tS.Damage, tS.BulletSpeed);
     }
     void FindTarget()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, currentRange, enemyLayer);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, tS.Range, enemyLayer);
         if (enemies.Length != 0)
         {
             float closestEnemyDistance = Mathf.Infinity;
@@ -88,7 +88,7 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     }
     bool CheckTarget()
     {
-        if(Vector2.Distance(transform.position, currentTarget.transform.position) > currentRange)
+        if(Vector2.Distance(transform.position, currentTarget.transform.position) > tS.Range)
         {
             currentTarget = null;
             return false;
@@ -99,6 +99,11 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, currentRange);
+        //Gizmos.DrawWireSphere(transform.position, tS.Range);
+    }
+
+    public void BeingHeld(bool held)
+    {
+        beingHeld = held;
     }
 }

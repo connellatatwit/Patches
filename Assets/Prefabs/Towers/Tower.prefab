@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 1625777219588354718}
   - component: {fileID: 1625777219588354713}
   - component: {fileID: 1625777219588354719}
+  - component: {fileID: -7594286456011085772}
   m_Layer: 7
   m_Name: Tower
   m_TagString: Untagged
@@ -193,7 +194,20 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   bulletPrefab: {fileID: 6693764858247879075, guid: c813f70ea4c4fa944ad77cb75955d1dd, type: 3}
   shootPos: {fileID: 3430888963758661192}
-  baseRange: 7
-  baseDmg: 1
+--- !u!114 &-7594286456011085772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625777219588354712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16337884c44f03b49a89f974f510eb72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseRange: 6
+  baseDmg: 4
   baseAttackCd: 1
   bulletSpeed: 10
+  baseMaxUpgrades: 3

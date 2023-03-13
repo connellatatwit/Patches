@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyTouchDamage : MonoBehaviour
 {
-    [SerializeField] int dmg;
+    private EnemyStats eS;
     [SerializeField] float attackSpeedCd;
     private float attackSpeedTimer;
     private PlayerHealth player;
@@ -14,6 +14,7 @@ public class EnemyTouchDamage : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        eS = GetComponent<EnemyStats>();
     }
 
     private void Update()
@@ -37,7 +38,7 @@ public class EnemyTouchDamage : MonoBehaviour
                 if (attackSpeedTimer <= 0)
                 {
                     attackSpeedTimer = attackSpeedCd;
-                    player.TakeDamage(dmg);
+                    player.TakeDamage(eS.Damage);
                 }
             }
         }

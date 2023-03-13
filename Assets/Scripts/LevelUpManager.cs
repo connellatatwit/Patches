@@ -14,8 +14,7 @@ public class LevelUpManager : MonoBehaviour
 
     private bool selecting = false;
     [Header("Prefabs")]
-    [SerializeField] List<GameObject> turrets;
-    [SerializeField] List<GameObject> items;
+    [SerializeField] List<GameObject> rewards;
     private bool itemIsATurret;
 
     private void Start()
@@ -61,8 +60,19 @@ public class LevelUpManager : MonoBehaviour
         Time.timeScale = 1;
         levelPanel.SetActive(false);
 
-        GameObject newItem = Instantiate(itemList[currentSelectedItem]);
-        player.GetComponent<PickUpObject>().GiveItem(newItem);
+        // TODO Find out if the item is a tower or passive
+        if (itemList[currentSelectedItem].GetComponent<ITower>() != null)
+        {
+            Debug.Log("Tower picked"); 
+            GameObject newItem = Instantiate(itemList[currentSelectedItem]);
+            player.GetComponent<PickUpObject>().GiveItem(newItem);
+        }
+        else if(itemList[currentSelectedItem].GetComponent<PassiveStatItem>() != null)
+        {
+            Debug.Log("Tower not picked");
+            GameObject newItem = Instantiate(itemList[currentSelectedItem]);
+            player.GetComponent<Inventory>().AddStatToTurrets(itemList[currentSelectedItem].GetComponent<PassiveStatItem>());
+        }
     }
     public void LevelUp(bool a5)
     {
@@ -74,7 +84,7 @@ public class LevelUpManager : MonoBehaviour
         selecting = true;
     }
 
-    public void SetItemPanels()
+    /*public void SetItemPanels()
     {
         // Decide if it is a turret or not
         List<GameObject> thisList = new List<GameObject>();
@@ -88,6 +98,23 @@ public class LevelUpManager : MonoBehaviour
         itemList.Add(thisList[randomList[0]]);
         itemList.Add(thisList[randomList[1]]);
         itemList.Add(thisList[randomList[2]]);
+
+        // Set all three panels
+        for (int i = 0; i < itemPanels.Count; i++)
+        {
+            // Set panels
+            itemPanels[i].SetInformation(itemList[i]);
+            itemPanels[i].SetSelected(false);
+        }
+        itemPanels[0].SetSelected(true);
+    }*/
+    public void SetItemPanels()
+    {
+        GenerateRandomList(rewards);
+        itemList.Clear();
+        itemList.Add(rewards[randomList[0]]);
+        itemList.Add(rewards[randomList[1]]);
+        itemList.Add(rewards[randomList[2]]);
 
         // Set all three panels
         for (int i = 0; i < itemPanels.Count; i++)

@@ -54,6 +54,7 @@ public class PickUpObject : MonoBehaviour
     public void GiveItem(GameObject newItem)
     {
         heldObject = newItem;
+        heldObject.GetComponent<IItem>().BeingHeld(true);
         //indicator.gameObject.SetActive(false);
         playerInventory.PickUpItem(heldObject);
     }
@@ -79,6 +80,7 @@ public class PickUpObject : MonoBehaviour
         }
         else
             heldObject.transform.position = new Vector2(dropPos.x - 1, dropPos.y);
+        heldObject.GetComponent<IItem>().BeingHeld(false);
         playerInventory.DropItem();
         GameObject nextItem = playerInventory.GetNextItem();
         if (nextItem != null)

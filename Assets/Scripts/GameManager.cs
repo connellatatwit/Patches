@@ -16,11 +16,12 @@ public class GameManager : MonoBehaviour
             return;
         }
         instance = this;
+        LUM = GetComponent<LevelUpManager>();
+
     }
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        LUM = GetComponent<LevelUpManager>();
     }
 
     public void LevelUp(bool a5)

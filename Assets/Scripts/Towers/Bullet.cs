@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     private int dmg;
     private float bulletSpeed;
 
-    private float deathTimer = 3f;
+    private float deathTimer = 1f;
     [SerializeField] LayerMask enemyLayer = (1 << 11);
 
     public void InitBullet(Transform target, int dmg, float bulletSpeed)
@@ -38,7 +38,6 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.layer == 11)
         {
-            Debug.Log(collision.gameObject.layer + " " + collision.gameObject.name);
             collision.GetComponent<EnemyHealth>().TakeDamage(dmg);
             Destroy(gameObject);
         }
