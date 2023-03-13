@@ -56,7 +56,7 @@ public class PickUpObject : MonoBehaviour
         heldObject = newItem;
         heldObject.GetComponent<IItem>().BeingHeld(true);
         //indicator.gameObject.SetActive(false);
-        playerInventory.PickUpItem(heldObject);
+        playerInventory.GetNewItem(heldObject);
     }
 
     private void PickUp()

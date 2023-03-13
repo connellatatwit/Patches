@@ -13,14 +13,18 @@ public class Inventory : MonoBehaviour
         if (heldItems.Count != 0)
             heldItems[heldItems.Count - 1].SetActive(false);
         heldItems.Add(newTower);
-        if(newTower.GetComponent<TowerStats>() != null)
+    }
+    public void GetNewItem(GameObject newItem)
+    {
+        if (newItem.GetComponent<TowerStats>() != null)
         {
             // Check if this is a new Tower or not
-            if (!towers.Contains(newTower.GetComponent<TowerStats>()))
+            if (!towers.Contains(newItem.GetComponent<TowerStats>()))
             {
-                HandleNewTower(newTower);
+                HandleNewTower(newItem);
             }
         }
+        PickUpItem(newItem);
     }
     public void DropItem()
     {
