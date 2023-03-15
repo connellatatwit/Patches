@@ -36,7 +36,8 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     }
     public void LevelUp()
     {
-
+        Debug.Log("Leveled up Pea shooter");
+        currentLevel++;
     }
 
     private void Update()

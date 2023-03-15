@@ -19,6 +19,8 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] int dmg;
     private int currentDmg;
 
+    private bool stunned = false;
+
     private void Start()
     {
         Init();
@@ -35,9 +37,16 @@ public class EnemyStats : MonoBehaviour
     }
     public float Speed()
     {
-        float temp = currentSpeed * currentSpeedReduction;
-        currentSpeedReduction = 1;
-        return temp;
+        if (!stunned)
+        {
+            float temp = currentSpeed * currentSpeedReduction;
+            currentSpeedReduction = 1;
+            return temp;
+        }
+        else
+        {
+            return 0;
+        }
     }
     public int Damage
     {
@@ -53,11 +62,22 @@ public class EnemyStats : MonoBehaviour
     {
         if (targetStat == EnemyStat.MoveSpeed)
         {
-            currentSpeedReduction = amount;
+            if(amount < currentSpeedReduction)
+                currentSpeedReduction = amount;
         }
         else if (targetStat == EnemyStat.Defense)
         {
 
         }
+    }
+    public void Stun(float length)
+    {
+        stunned = true;
+        StartCoroutine(WaitForStun(length));
+    }
+    private IEnumerator WaitForStun(float length)
+    {
+        yield return new WaitForSeconds(length);
+        stunned = false;
     }
 }

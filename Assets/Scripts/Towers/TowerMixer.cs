@@ -4,13 +4,33 @@ using UnityEngine;
 
 public class TowerMixer : MonoBehaviour
 {
-    private bool mixing;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] ParticleSystem anim;
+    [SerializeField] AudioSource source;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Start()
     {
-        if (mixing)
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(rb.velocity.magnitude >= .1f)
         {
-            
+            if(collision.transform.GetComponent<ITower>() != null)
+            {
+                if(collision.transform.GetComponent<ITower>().Level == GetComponent<ITower>().Level)
+                {
+                    if(collision.transform.GetComponent<ITower>().name == GetComponent<ITower>().name)
+                    {
+                        //Level up
+                        Destroy(collision.gameObject);
+                        GetComponent<ITower>().LevelUp();
+                        Instantiate(anim, transform.position, Quaternion.identity);
+                        GetComponent<AudioSource>().Play();
+                    }
+                }
+            }
         }
     }
 }

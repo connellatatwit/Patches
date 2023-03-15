@@ -24,9 +24,12 @@ public class EnemyTouchDamage : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == player.gameObject)
+        if (player != null)
         {
-            touching = true;
+            if (collision.gameObject == player.gameObject)
+            {
+                touching = true;
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D collision)

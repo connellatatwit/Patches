@@ -10,19 +10,18 @@ public class Inventory : MonoBehaviour
 
     public void PickUpItem(GameObject newTower)
     {
+        newTower.GetComponent<Collider2D>().isTrigger = true;
+        Debug.Log(newTower.GetComponent<Collider2D>().isTrigger);
         if (heldItems.Count != 0)
             heldItems[heldItems.Count - 1].SetActive(false);
         heldItems.Add(newTower);
     }
     public void GetNewItem(GameObject newItem)
     {
+        towers.RemoveAll(x => !x);
         if (newItem.GetComponent<TowerStats>() != null)
         {
-            // Check if this is a new Tower or not
-            if (!towers.Contains(newItem.GetComponent<TowerStats>()))
-            {
-                HandleNewTower(newItem);
-            }
+            HandleNewTower(newItem);
         }
         PickUpItem(newItem);
     }
@@ -43,11 +42,25 @@ public class Inventory : MonoBehaviour
         newTower.GetComponent<TowerStats>().InitStats();
 
         // TODO: Check if it is the same name and level of any of the towers
+        for (int i = 0; i < towers.Count; i++)
+        {
+            // if they have the same name
+            if (newTower.GetComponent<ITower>().name == towers[i].GetComponent<ITower>().name)
+            {
+                // if they have the same level and name
+                if (newTower.GetComponent<ITower>().Level == towers[i].GetComponent<ITower>().Level)
+                {
+                    // Make Towers combine on touch
+                    //newTower.GetComponent<TowerMixer>().AddAMixer(towers[i].transform);
+                    //towers[i].GetComponent<TowerMixer>().AddAMixer(newTower.transform);
+                }
+            }
+        }
+        // Add tower to towers list
+        towers.Add(newTower.GetComponent<TowerStats>());
 
         // Catch old tower up to speed
         ApplyOldBuffs(newTower);
-        //Add Tower to the family
-        towers.Add(newTower.GetComponent<TowerStats>());
     }
 
     public void AddStatToTurrets(PassiveStatItem passiveStatItem)

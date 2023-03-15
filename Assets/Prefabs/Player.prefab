@@ -296,6 +296,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heldItems: []
+  towers: []
+  statItems: []
+  connectorPrefab: {fileID: 3602616077299399508, guid: 498fcaef09beb334a90d9068cccc2e0d, type: 3}
 --- !u!114 &7172052668331005493
 MonoBehaviour:
   m_ObjectHideFlags: 0
