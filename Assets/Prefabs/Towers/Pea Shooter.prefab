@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: -552586387848132234}
   - component: {fileID: 3936837070724790121}
   m_Layer: 7
-  m_Name: Tower
+  m_Name: Pea Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,6 +197,9 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 97a72ba555599d64097ea14ed4dd1c0d, type: 3}
   bulletPrefab: {fileID: 1405522350318180383, guid: 77a100c45a053bf45bb2ebcdf4ec5d18, type: 3}
   shootPos: {fileID: 3430888963758661192}
+  damageIncrease3: 1
+  atkSpeedIncrease3: 0.8
+  flamePrefab: {fileID: 2351154793707236423, guid: 1360283fc0dedf34abcb715537768b9c, type: 3}
 --- !u!114 &-7594286456011085772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   anim: {fileID: 7872767268039431941, guid: 4a4f1615f17420945bc6837c1ff0860c, type: 3}
-  audio: {fileID: 3936837070724790121}
+  source: {fileID: 0}
 --- !u!82 &3936837070724790121
 AudioSource:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PeaShooter : MonoBehaviour, ITower, IItem
 {
-    private GameObject currentTarget;
+    private List<GameObject> currentTargets = new List<GameObject> { null, null, null, null, null };
     [Header("Information")]
     [SerializeField] string itemName;
     [TextArea(5,5)]
@@ -14,7 +14,15 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
 
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform shootPos;
-    private float attackTimer = 1f;
+    private float[] attackTimer = new float[5];
+
+    [Header("Level 2")]
+    [Header("Level 3")]
+    [SerializeField] int damageIncrease3;
+    [SerializeField] float atkSpeedIncrease3;
+    [SerializeField] GameObject flamePrefab;
+    [Header("Level 4")]
+    [Header("Level 5")]
 
     private TowerStats tS;
 
@@ -38,59 +46,173 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     {
         Debug.Log("Leveled up Pea shooter");
         currentLevel++;
+        HandleLevelUp();
+    }
+    private void HandleLevelUp()
+    {
+        if (currentLevel == 2)
+        {
+            //sr.sprite = levelImages[currentLevel - 1];
+        }
+        if (currentLevel == 3)
+        {
+            tS.IncreaseDamage(damageIncrease3);
+            tS.IncreaseAttackSpeed(atkSpeedIncrease3);
+            //sr.sprite = levelImages[currentLevel - 1];
+        }
+        if (currentLevel == 4)
+        {
+            //sr.sprite = levelImages[currentLevel - 1];
+        }
+        if (currentLevel == 5)
+        {
+            //sr.sprite = levelImages[currentLevel - 1];
+        }
     }
 
     private void Update()
     {
-        attackTimer -= Time.deltaTime;
-
-        if (currentTarget != null)
+        if (currentLevel == 1)
         {
-            if (attackTimer <= 0)
+            Level1Effect();
+        }
+        else if (currentLevel == 2)
+        {
+            Level2Effect();
+        }
+        else if (currentLevel == 3)
+        {
+            Level3Effect();
+        }
+        else if (currentLevel == 4)
+        {
+            Level4Effect();
+        }
+        else if (currentLevel == 5)
+        {
+            Level5Effect();
+        }
+    }
+
+    private void Level1Effect()
+    {
+        attackTimer[0] -= Time.deltaTime;
+
+        if (currentTargets[0] != null)
+        {
+            if (attackTimer[0] <= 0)
             {
                 //Check if target is in range
-                if (CheckTarget())
+                if (CheckTarget(0))
                 {
                     // Shoot
-                    attackTimer = tS.AttackCd;
-                    Shoot();
+                    attackTimer[0] = tS.AttackCd;
+                    Shoot(0);
                 }
             }
         }
         else
         {
             // Find Target
-            FindTarget();
+            FindTarget(0);
+        }
+    }
+    private void Level2Effect()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            attackTimer[i] -= Time.deltaTime;
+
+            if (currentTargets[i] != null)
+            {
+                if (attackTimer[i] <= 0)
+                {
+                    //Check if target is in range
+                    if (CheckTarget(i))
+                    {
+                        // Shoot
+                        attackTimer[i] = tS.AttackCd;
+                        Shoot(i);
+                    }
+                }
+            }
+            else
+            {
+                // Find Target
+                FindTarget(i);
+            }
         }
     }
 
-    void Shoot()
+    private void Level3Effect()
     {
-        GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().InitBullet(currentTarget.transform, tS.Damage, tS.BulletSpeed);
+        for (int i = 0; i < 2; i++)
+        {
+            attackTimer[i] -= Time.deltaTime;
+
+            if (currentTargets[i] != null)
+            {
+                if (attackTimer[i] <= 0)
+                {
+                    //Check if target is in range
+                    if (CheckTarget(i))
+                    {
+                        // Shoot
+                        attackTimer[i] = tS.AttackCd;
+                        Shoot(i);
+                    }
+                }
+            }
+            else
+            {
+                // Find Target
+                FindTarget(i);
+            }
+        }
     }
-    void FindTarget()
+    private void Level4Effect()
+    {
+
+    }
+    private void Level5Effect()
+    {
+
+    }
+
+    void Shoot(int index)
+    {
+        GameObject bullet;
+        if (tS.Damage > 2) {
+            bullet = Instantiate(flamePrefab, shootPos.position, Quaternion.identity);
+        }
+        else
+        {
+            bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
+        }
+        bullet.GetComponent<Bullet>().InitBullet(currentTargets[index].transform, tS.Damage, tS.BulletSpeed);
+    }
+    void FindTarget(int index)
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, tS.Range, enemyLayer);
         if (enemies.Length != 0)
         {
             float closestEnemyDistance = Mathf.Infinity;
 
-            foreach (Collider2D enemy in enemies)
+            for (int i = 0; i < enemies.Length; i++)
             {
-                if (Vector2.Distance(enemy.transform.position, transform.position) <= closestEnemyDistance)
+                if (Vector2.Distance(enemies[i].transform.position, transform.position) <= closestEnemyDistance && !currentTargets.Contains(enemies[i].gameObject))
                 {
                     // Closer enemy
-                    currentTarget = enemy.gameObject;
+                    currentTargets[index] = enemies[i].gameObject;
                 }
             }
         }
     }
-    bool CheckTarget()
+    bool CheckTarget(int index)
     {
-        if(Vector2.Distance(transform.position, currentTarget.transform.position) > tS.Range)
+        if(Vector2.Distance(transform.position, currentTargets[index].transform.position) > tS.Range)
         {
-            currentTarget = null;
+            currentTargets[index] = null;
             return false;
         }
         return true;
