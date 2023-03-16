@@ -15,20 +15,17 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
     [SerializeField] SpriteRenderer sr;
     [SerializeField] List<Sprite> levelImages;
     [Header("Level 1")]
-    [SerializeField] float slowAmount1;
     [Header("Level 2")]
-    [SerializeField] float slowAmount2;
+    [SerializeField] float slowIncrease2;
     [SerializeField] int dmg2;
     [SerializeField] float atkCD2;
     [Header("Level 3")]
-    [SerializeField] float slowAmount3;
+    [SerializeField] float slowIncrease3;
     [SerializeField] float rangeIncrease3;
     [Header("Level 4")]
-    [SerializeField] float stunLength4; // length of being stunned
-    [SerializeField] float stunCd4;
+    [SerializeField] float stunLength4 = 1; // length of being stunned
     private float stunTimer;
     [Header("Level 5")]
-    [SerializeField] float stunCd5;
     [SerializeField] int dmg5;
     [SerializeField] float atckCd5;
 
@@ -74,16 +71,18 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
         if (currentLevel == 2)
         {
             tS.SetAttackSpeed(atkCD2);
+            tS.IncreaseBulletSpeed(slowIncrease2);
             sr.sprite = levelImages[currentLevel - 1];
         }
         if(currentLevel == 3)
         {
             tS.IncreaseRange(rangeIncrease3);
+            tS.IncreaseBulletSpeed(slowIncrease3);
             sr.sprite = levelImages[currentLevel - 1];
         }
         if (currentLevel == 4)
         {
-            stunTimer = stunCd4;
+            stunTimer = tS.AttackCd*2;
             sr.sprite = levelImages[currentLevel - 1];
         }
         if (currentLevel == 5)
@@ -124,7 +123,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
         {
             foreach (Collider2D enemy in enemies)
             {
-                enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, slowAmount1);
+                enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, 1-((tS.BulletSpeed * 6.6f)/100));
             }
         }
     }
@@ -136,7 +135,8 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
         {
             foreach (Collider2D enemy in enemies)
             {
-                enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, slowAmount2);
+                if(enemy != null)
+                    enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, 1 - ((tS.BulletSpeed * 6.6f) / 100));
                 // Do damage
                 if (attackTimer <= 0)
                 {
@@ -159,7 +159,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
         {
             foreach (Collider2D enemy in enemies)
             {
-                enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, slowAmount3);
+                enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, 1 - ((tS.BulletSpeed * 6.6f) / 100));
                 // Do damage
                 if (attackTimer <= 0)
                 {
@@ -182,7 +182,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
         {
             foreach (Collider2D enemy in enemies)
             {
-                enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, slowAmount3);
+                enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, 1 - ((tS.BulletSpeed * 6.6f) / 100));
                 // Do damage
                 if (attackTimer <= 0)
                 {
@@ -199,9 +199,10 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
         {
             // Reset attack timer
             attackTimer = tS.AttackCd;
+            Debug.Log(tS.AttackCd);
         }
         if( stunTimer <= 0)
-            stunTimer = stunCd4;
+            stunTimer = tS.AttackCd*2;
     }
     private void Level5Effect()
     {
@@ -212,7 +213,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
         {
             foreach (Collider2D enemy in enemies)
             {
-                enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, slowAmount3);
+                enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, 1 - ((tS.BulletSpeed * 6.6f) / 100));
                 // Do damage
                 if (attackTimer <= 0)
                 {
@@ -231,6 +232,6 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
             attackTimer = tS.AttackCd;
         }
         if (stunTimer <= 0)
-            stunTimer = stunCd5;
+            stunTimer = tS.AttackCd*2;
     }
 }

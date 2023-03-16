@@ -14,7 +14,7 @@ public class LevelUpManager : MonoBehaviour
 
     private bool selecting = false;
     [Header("Prefabs")]
-    [SerializeField] List<GameObject> rewards;
+    [SerializeField] List<GameObject> levelUpRewards;
     private bool itemIsATurret;
 
     private void Start()
@@ -37,7 +37,7 @@ public class LevelUpManager : MonoBehaviour
                 currentSelectedItem = Mathf.Clamp(currentSelectedItem, 0, 2);
                 HandlePanelSelection();
             }
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.J))
             {
                 SelectItem();
             }
@@ -108,11 +108,11 @@ public class LevelUpManager : MonoBehaviour
     }*/
     public void SetItemPanels()
     {
-        GenerateRandomList(rewards);
+        GenerateRandomList(levelUpRewards);
         itemList.Clear();
-        itemList.Add(rewards[randomList[0]]);
-        itemList.Add(rewards[randomList[1]]);
-        itemList.Add(rewards[randomList[2]]);
+        itemList.Add(levelUpRewards[randomList[0]]);
+        itemList.Add(levelUpRewards[randomList[1]]);
+        itemList.Add(levelUpRewards[randomList[2]]);
 
         // Set all three panels
         for (int i = 0; i < itemPanels.Count; i++)

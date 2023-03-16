@@ -60,6 +60,7 @@ public class EnemyStats : MonoBehaviour
 
     public void WeakenStat(EnemyStat targetStat, float amount)
     {
+        //Debug.Log(amount);
         if (targetStat == EnemyStat.MoveSpeed)
         {
             if(amount < currentSpeedReduction)

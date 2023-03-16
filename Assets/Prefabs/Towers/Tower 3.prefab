@@ -82,6 +82,9 @@ MonoBehaviour:
   itemSprite: {fileID: 0}
   bulletPrefab: {fileID: 6693764858247879075, guid: c813f70ea4c4fa944ad77cb75955d1dd, type: 3}
   shootPos: {fileID: 3410160437181830008}
+  damageIncrease3: 0
+  atkSpeedIncrease3: 0
+  flamePrefab: {fileID: 0}
 --- !u!114 &-1976405608720098971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   anim: {fileID: 7872767268039431941, guid: 4a4f1615f17420945bc6837c1ff0860c, type: 3}
-  audio: {fileID: -7739601920697836360}
+  source: {fileID: 0}
 --- !u!82 &-7739601920697836360
 AudioSource:
   m_ObjectHideFlags: 0
@@ -147,7 +150,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 25cda44bae72efd498f8cbb52e2de750, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.536
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1625777219443981352}
   - component: {fileID: 1625777219443981353}
+  - component: {fileID: 4733237755347932059}
   m_Layer: 7
   m_Name: Tower Image
   m_TagString: Untagged
@@ -115,6 +116,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4733237755347932059
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625777219443981355}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a8879e40e058bb42b796ff2beb291ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1625777219588354712
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,9 +218,13 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 97a72ba555599d64097ea14ed4dd1c0d, type: 3}
   bulletPrefab: {fileID: 1405522350318180383, guid: 77a100c45a053bf45bb2ebcdf4ec5d18, type: 3}
   shootPos: {fileID: 3430888963758661192}
-  damageIncrease3: 1
-  atkSpeedIncrease3: 0.8
+  animator: {fileID: 4733237755347932059}
+  damageIncrease2: 1
   flamePrefab: {fileID: 2351154793707236423, guid: 1360283fc0dedf34abcb715537768b9c, type: 3}
+  atkSpeedIncrease3: 0.2
+  rangeIncrease4: 3
+  bulletSpeedIncrease4: 5
+  atkSpeedIncrease5: 0.2
 --- !u!114 &-7594286456011085772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,7 +290,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 25cda44bae72efd498f8cbb52e2de750, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.536
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -22,6 +22,7 @@ public class WaveSpawner : MonoBehaviour
     public List<GameObject> spawnedEnemies = new List<GameObject>();
 
     private Transform player;
+    [SerializeField] EventSpawner es;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +68,7 @@ public class WaveSpawner : MonoBehaviour
         if (waveTimer <= 0 && spawnedEnemies.Count <= 0)
         {
             currWave++;
+            CheckEvent();
             GenerateWave();
         }
     }
@@ -78,6 +80,14 @@ public class WaveSpawner : MonoBehaviour
         return newPos;
     }
 
+    private void CheckEvent()
+    {
+        if (es.IsChestEvent(currWave))
+        {
+            GameObject chest = es.SpawnChest(RandomPointOnCircleEdge(50f), currWave);
+            player.GetComponent<PlayerPointer>().SetTarget(chest.transform);
+        }
+    }
     public void GenerateWave()
     {
         waveValue = currWave * valuePerWave;

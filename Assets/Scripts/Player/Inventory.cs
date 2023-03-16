@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
         heldItems.Add(newTower);
     }
     public void GetNewItem(GameObject newItem)
-    {
+    {        
         towers.RemoveAll(x => !x);
         if (newItem.GetComponent<TowerStats>() != null)
         {
@@ -38,6 +38,7 @@ public class Inventory : MonoBehaviour
     }
     private void HandleNewTower(GameObject newTower)
     {
+        towers.RemoveAll(x => !x);
         // Initiate Stats
         newTower.GetComponent<TowerStats>().InitStats();
 

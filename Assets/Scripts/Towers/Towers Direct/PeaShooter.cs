@@ -16,13 +16,18 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     [SerializeField] Transform shootPos;
     private float[] attackTimer = new float[5];
 
+    [Header("Animation")]
+    [SerializeField] Animator animator;
     [Header("Level 2")]
-    [Header("Level 3")]
-    [SerializeField] int damageIncrease3;
-    [SerializeField] float atkSpeedIncrease3;
+    [SerializeField] int damageIncrease2;
     [SerializeField] GameObject flamePrefab;
+    [Header("Level 3")]
+    [SerializeField] float atkSpeedIncrease3;
     [Header("Level 4")]
+    [SerializeField] float rangeIncrease4;
+    [SerializeField] float bulletSpeedIncrease4;
     [Header("Level 5")]
+    [SerializeField] float atkSpeedIncrease5;
 
     private TowerStats tS;
 
@@ -42,31 +47,40 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     {
         tS = GetComponent<TowerStats>();
     }
+    private void OnEnable()
+    {
+        animator.SetInteger("Level", currentLevel);
+    }
     public void LevelUp()
     {
         Debug.Log("Leveled up Pea shooter");
         currentLevel++;
         HandleLevelUp();
     }
+
     private void HandleLevelUp()
     {
+        animator.SetInteger("Level", currentLevel);
         if (currentLevel == 2)
         {
             //sr.sprite = levelImages[currentLevel - 1];
+            tS.IncreaseDamage(damageIncrease2);
         }
         if (currentLevel == 3)
         {
-            tS.IncreaseDamage(damageIncrease3);
             tS.IncreaseAttackSpeed(atkSpeedIncrease3);
             //sr.sprite = levelImages[currentLevel - 1];
         }
         if (currentLevel == 4)
         {
             //sr.sprite = levelImages[currentLevel - 1];
+            tS.IncreaseRange(rangeIncrease4);
+            tS.IncreaseBulletSpeed(bulletSpeedIncrease4);
         }
         if (currentLevel == 5)
         {
             //sr.sprite = levelImages[currentLevel - 1];
+            tS.IncreaseAttackSpeed(atkSpeedIncrease5);
         }
     }
 
@@ -172,11 +186,55 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     }
     private void Level4Effect()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            attackTimer[i] -= Time.deltaTime;
 
+            if (currentTargets[i] != null)
+            {
+                if (attackTimer[i] <= 0)
+                {
+                    //Check if target is in range
+                    if (CheckTarget(i))
+                    {
+                        // Shoot
+                        attackTimer[i] = tS.AttackCd;
+                        Shoot(i);
+                    }
+                }
+            }
+            else
+            {
+                // Find Target
+                FindTarget(i);
+            }
+        }
     }
     private void Level5Effect()
     {
+        for (int i = 0; i < 5; i++)
+        {
+            attackTimer[i] -= Time.deltaTime;
 
+            if (currentTargets[i] != null)
+            {
+                if (attackTimer[i] <= 0)
+                {
+                    //Check if target is in range
+                    if (CheckTarget(i))
+                    {
+                        // Shoot
+                        attackTimer[i] = tS.AttackCd;
+                        Shoot(i);
+                    }
+                }
+            }
+            else
+            {
+                // Find Target
+                FindTarget(i);
+            }
+        }
     }
 
     void Shoot(int index)
@@ -189,7 +247,7 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
         {
             bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
         }
-        bullet.GetComponent<Bullet>().InitBullet(currentTargets[index].transform, tS.Damage, tS.BulletSpeed);
+        bullet.GetComponent<IBullet>().InitBullet(currentTargets[index].transform, tS.Damage, tS.BulletSpeed);
     }
     void FindTarget(int index)
     {

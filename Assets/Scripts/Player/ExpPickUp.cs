@@ -48,6 +48,11 @@ public class ExpPickUp : MonoBehaviour
         }
     }
 
+    public int CurrentLevel
+    {
+        get { return currentLevel; }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;

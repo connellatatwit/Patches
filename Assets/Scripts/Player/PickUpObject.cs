@@ -22,22 +22,25 @@ public class PickUpObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Time.timeScale != 0)
         {
-            if(heldObject != null)
-                ThrowItem();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            PickUp();
-        }
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                if (heldObject != null)
+                    ThrowItem();
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                PickUp();
+            }
 
-        if (heldObject != null)
-        {
-            heldObject.transform.position = overHead.transform.position;
-        }
+            if (heldObject != null)
+            {
+                heldObject.transform.position = overHead.transform.position;
+            }
 
-        HandleIndicator();
+            HandleIndicator();
+        }
     }
     private void HandleIndicator()
     {
@@ -104,9 +107,9 @@ public class PickUpObject : MonoBehaviour
         else
             throwDir = new Vector2(-throwXStrength, 5f);
 
+        StartCoroutine(ThrownObjectHandle(heldObject.GetComponent<Rigidbody2D>()));
         heldObject.GetComponent<Collider2D>().isTrigger = false;
         heldObject.GetComponent<Rigidbody2D>().velocity = throwDir;
-        StartCoroutine(ThrownObjectHandle(heldObject.GetComponent<Rigidbody2D>()));
 
         playerInventory.DropItem();
         GameObject nextItem = playerInventory.GetNextItem();
@@ -122,12 +125,16 @@ public class PickUpObject : MonoBehaviour
     }
     private IEnumerator ThrownObjectHandle(Rigidbody2D thrownObj)
     {
+        Debug.Log("Being thrown");
         thrownObj.constraints = RigidbodyConstraints2D.None;
         thrownObj.constraints = RigidbodyConstraints2D.FreezeRotation;
         thrownObj.gravityScale = 1;
         yield return new WaitForSeconds(1.2f);
-        thrownObj.gravityScale = 0;
-        yield return new WaitWhile(() =>(thrownObj.velocity.magnitude <= .1f));
+        if (thrownObj != null)
+            thrownObj.gravityScale = 0;
+        else
+            yield break;
+        yield return new WaitWhile(() => thrownObj.velocity.magnitude <= .1f);
         thrownObj.constraints = RigidbodyConstraints2D.FreezeAll;
     }
     private void OnDrawGizmos()

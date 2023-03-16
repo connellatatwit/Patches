@@ -164,7 +164,7 @@ MonoBehaviour:
   baseRange: 6
   baseDmg: 4
   baseAttackCd: 1
-  bulletSpeed: 10
+  bulletSpeed: 5
   baseMaxUpgrades: 3
 --- !u!114 &7229868573315877735
 MonoBehaviour:
@@ -188,15 +188,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1964432af0a63944695d6b5bc3025d73, type: 3}
   - {fileID: -2030941877, guid: eb25774baa2ffd14ca76d7ad9741ff0f, type: 3}
   - {fileID: 1512196745, guid: eb25774baa2ffd14ca76d7ad9741ff0f, type: 3}
-  slowAmount1: 0.77
-  slowAmount2: 0.5
+  slowIncrease2: 2.5
   dmg2: 1
   atkCD2: 3
-  slowAmount3: 0.33
+  slowIncrease3: 3
   rangeIncrease3: 5
   stunLength4: 1
-  stunCd4: 5
-  stunCd5: 0.5
   dmg5: 2
   atckCd5: 0.5
 --- !u!50 &-166047673629161813
@@ -234,7 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   anim: {fileID: 7872767268039431941, guid: 4a4f1615f17420945bc6837c1ff0860c, type: 3}
-  audio: {fileID: 6515682888538715679}
+  source: {fileID: 0}
 --- !u!82 &6515682888538715679
 AudioSource:
   m_ObjectHideFlags: 0
@@ -247,7 +244,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 25cda44bae72efd498f8cbb52e2de750, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.536
   m_Pitch: 1
   Loop: 0
   Mute: 0

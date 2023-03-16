@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour, IBullet
 {
     private Transform target;
     private int dmg;
@@ -37,7 +37,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.layer == 11)
         {
-            collision.GetComponent<EnemyHealth>().TakeDamage(dmg);
+            collision.GetComponent<NonPlayerHealth>().TakeDamage(dmg);
             Destroy(gameObject);
         }
     }
