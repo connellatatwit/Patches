@@ -15,7 +15,6 @@ public class PlayerPointer : MonoBehaviour
     }
     private void Update()
     {
-
         if(target != null)
         {
             var dir = target.position - pointer.position;

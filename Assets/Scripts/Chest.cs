@@ -9,11 +9,15 @@ public class Chest : MonoBehaviour, NonPlayerHealth
     [SerializeField] Animator animator;
     private int maxHealth;
     private int currentHealth;
+    private Transform player;
+    [SerializeField] private GameObject reward;
 
-    public void Init(int maxHealth)
+    public void Init(int maxHealth, Transform player, GameObject reward)
     {
         this.maxHealth = maxHealth;
         currentHealth = maxHealth;
+        this.player = player;
+        this.reward = reward;
     }
     public void TakeDamage(int amount)
     {
@@ -29,5 +33,12 @@ public class Chest : MonoBehaviour, NonPlayerHealth
     public void OpenChest()
     {
         Debug.Log("KACHING");
+        GameObject item = Instantiate(reward, transform.position, Quaternion.identity);
+        Vector2 randomVector = new Vector2(Random.value, Random.value);
+        randomVector.Normalize();
+        item.GetComponent<Rigidbody2D>().velocity = randomVector * 5;
+
+        player.GetComponent<PlayerPointer>().SetTarget(item.transform);
+        
     }
 }

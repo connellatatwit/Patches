@@ -15,6 +15,10 @@ public class TowerStats : MonoBehaviour
     [SerializeField] int baseMaxUpgrades;
     private int currentUpgrade = 0;
     private int currentMaxUpgrades;
+    [SerializeField] float baseCritChance;
+    private float currentCritChance;
+    [SerializeField] float baseCritDamage = 1.2f;
+    private float currentCritDamage;
 
     private float startTime; // Time the tower came to existance: Used to decide which tower to kill if they are the same
 
@@ -24,6 +28,8 @@ public class TowerStats : MonoBehaviour
         currentRange = baseRange;
         attackCd = baseAttackCd;
         currentMaxUpgrades = baseMaxUpgrades;
+        currentCritChance = baseCritChance;
+        currentCritDamage = baseCritDamage;
 
         startTime = Time.time;
     }
@@ -46,6 +52,14 @@ public class TowerStats : MonoBehaviour
     public float StartTime
     {
         get { return startTime; }
+    }
+    public float CritChance
+    {
+        get { return currentCritChance; }
+    }
+    public float CritDamage
+    {
+        get { return currentCritDamage; }
     }
 
     public void IncreaseDamage(int amount)
@@ -70,6 +84,14 @@ public class TowerStats : MonoBehaviour
     public void IncreaseBulletSpeed(float amount)
     {
         bulletSpeed += amount;
+    }
+    public void IncreaseCritChance(float amount)
+    {
+        currentCritChance += amount;
+    }
+    public void IncreaseCritDmg(float amount)
+    {
+        currentCritDamage += amount;
     }
     public void IncreaseMaxUpgrade(int amount)
     {

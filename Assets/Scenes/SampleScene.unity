@@ -6221,6 +6221,7 @@ MonoBehaviour:
   - {fileID: 8863739816367807985, guid: f91f400f87944d540b53099c607ea473, type: 3}
   - {fileID: 1625777219588354712, guid: 79810f2dee4cfaf4fa68a048d4e4a2e7, type: 3}
   - {fileID: 7487317723527270509, guid: 934bd1948af78e441ab099c170823d71, type: 3}
+  - {fileID: 987826621122790676, guid: 3ff4bd861214c6a4b80f9c287d9ab459, type: 3}
 --- !u!114 &2006689552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6258,6 +6259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992348e1b91761442bca4efa495c9b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chestItems:
+  - {fileID: 8109103352060300475, guid: ada26f4c9ab1ee2409a7fd88220f0144, type: 3}
   waveForChest: 020000000400000006000000080000000a000000
   chestPrefab: {fileID: 6727258829092060170, guid: 126ec42c3137c9d4d9ebb5bf0d5db0f7, type: 3}
 --- !u!1001 &2076236124

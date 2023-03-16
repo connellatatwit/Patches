@@ -7,7 +7,9 @@ public enum TargetStat
     Damage,
     Range,
     AttackSpeed,
-    BulletSpeed
+    BulletSpeed,
+    CritChance,
+    CritDamage
 }
 public class TowerStatIncrease : MonoBehaviour, IItem
 {
@@ -91,6 +93,14 @@ public class TowerStatIncrease : MonoBehaviour, IItem
         else if (targetStat == TargetStat.BulletSpeed)
         {
             target.GetComponent<TowerStats>().IncreaseBulletSpeed(statIncreaseAmount);
+        }
+        else if(targetStat == TargetStat.CritChance)
+        {
+            target.GetComponent<TowerStats>().IncreaseCritChance(statIncreaseAmount);
+        }
+        else if(targetStat == TargetStat.CritDamage)
+        {
+            target.GetComponent<TowerStats>().IncreaseCritDmg(statIncreaseAmount);
         }
     }
 

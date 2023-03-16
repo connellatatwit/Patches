@@ -166,6 +166,8 @@ MonoBehaviour:
   baseAttackCd: 1
   bulletSpeed: 5
   baseMaxUpgrades: 3
+  baseCritChance: 5
+  baseCritDamage: 1.2
 --- !u!114 &7229868573315877735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,12 +191,12 @@ MonoBehaviour:
   - {fileID: -2030941877, guid: eb25774baa2ffd14ca76d7ad9741ff0f, type: 3}
   - {fileID: 1512196745, guid: eb25774baa2ffd14ca76d7ad9741ff0f, type: 3}
   slowIncrease2: 2.5
-  dmg2: 1
+  dmg2: 10
   atkCD2: 3
   slowIncrease3: 3
   rangeIncrease3: 5
   stunLength4: 1
-  dmg5: 2
+  dmg5: 20
   atckCd5: 0.5
 --- !u!50 &-166047673629161813
 Rigidbody2D:

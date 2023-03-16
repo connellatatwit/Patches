@@ -87,6 +87,14 @@ public class Inventory : MonoBehaviour
             {
                 towers[i].GetComponent<TowerStats>().IncreaseBulletSpeed(passiveStatItem.increase);
             }
+            else if (passiveStatItem.targetStat == TargetStat.CritChance)
+            {
+                towers[i].GetComponent<TowerStats>().IncreaseCritChance(passiveStatItem.increase);
+            }
+            else if (passiveStatItem.targetStat == TargetStat.CritDamage)
+            {
+                towers[i].GetComponent<TowerStats>().IncreaseCritDmg(passiveStatItem.increase);
+            }
         }
     }
     private void ApplyOldBuffs(GameObject newTower)
@@ -117,6 +125,14 @@ public class Inventory : MonoBehaviour
         else if (targetStat == TargetStat.BulletSpeed)
         {
             target.GetComponent<TowerStats>().IncreaseBulletSpeed(statIncreaseAmount);
+        }
+        else if (targetStat == TargetStat.CritChance)
+        {
+            target.GetComponent<TowerStats>().IncreaseCritChance(statIncreaseAmount);
+        }
+        else if (targetStat == TargetStat.CritDamage)
+        {
+            target.GetComponent<TowerStats>().IncreaseCritDmg(statIncreaseAmount);
         }
     }
 }

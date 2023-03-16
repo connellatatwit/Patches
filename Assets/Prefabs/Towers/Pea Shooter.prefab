@@ -219,7 +219,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1405522350318180383, guid: 77a100c45a053bf45bb2ebcdf4ec5d18, type: 3}
   shootPos: {fileID: 3430888963758661192}
   animator: {fileID: 4733237755347932059}
-  damageIncrease2: 1
+  damageIncrease2: 10
   flamePrefab: {fileID: 2351154793707236423, guid: 1360283fc0dedf34abcb715537768b9c, type: 3}
   atkSpeedIncrease3: 0.2
   rangeIncrease4: 3
@@ -238,10 +238,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseRange: 6
-  baseDmg: 2
+  baseDmg: 20
   baseAttackCd: 0.8
   bulletSpeed: 15
   baseMaxUpgrades: 3
+  baseCritChance: 5
+  baseCritDamage: 1.2
 --- !u!50 &-2399625089988919545
 Rigidbody2D:
   serializedVersion: 4
