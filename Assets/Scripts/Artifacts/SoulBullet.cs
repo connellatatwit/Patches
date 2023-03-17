@@ -9,6 +9,8 @@ public class SoulBullet : MonoBehaviour, IBullet
     private Transform currentTarget;
     private LayerMask enemyLayer = (1 << 11);
 
+    private float lifeTime = 10f;
+
     public void InitBullet(Transform target, int dmg, float bulletSpeed)
     {
         this.speed = bulletSpeed;
@@ -22,6 +24,12 @@ public class SoulBullet : MonoBehaviour, IBullet
         if(currentTarget != null)
         {
             transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, speed * Time.deltaTime);
+        }
+        else
+        {
+            lifeTime -= Time.deltaTime;
+            if (lifeTime <= 0)
+                Destroy(gameObject);
         }
     }
 
@@ -50,7 +58,6 @@ public class SoulBullet : MonoBehaviour, IBullet
     {
         if (collision.gameObject.layer == 11)
         {
-            Debug.Log(dmg);
             collision.GetComponent<NonPlayerHealth>().TakeDamage(dmg);
             Destroy(gameObject);
         }

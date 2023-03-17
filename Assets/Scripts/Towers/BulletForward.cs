@@ -9,7 +9,7 @@ public class BulletForward : MonoBehaviour, IBullet
     private int dmg;
     private float bulletSpeed;
 
-    private float deathTimer = .5f;
+    private float deathTimer = 10f;
     [SerializeField] LayerMask enemyLayer = (1 << 11);
 
     private Rigidbody2D rb;
@@ -29,16 +29,10 @@ public class BulletForward : MonoBehaviour, IBullet
 
     private void Update()
     {
-        if (target != null)
+        deathTimer -= Time.deltaTime;
+        if (deathTimer <= 0)
         {
-        }
-        else
-        {
-            deathTimer -= Time.deltaTime;
-            if (deathTimer <= 0)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
