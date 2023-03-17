@@ -67,6 +67,7 @@ public class Inventory : MonoBehaviour
     public void AddStatToTurrets(PassiveStatItem passiveStatItem)
     {
         statItems.Add(passiveStatItem);
+        towers.RemoveAll(x => !x);
 
         for (int i = 0; i < towers.Count; i++)
         {

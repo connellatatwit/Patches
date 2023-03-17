@@ -73,8 +73,9 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
             tS.SetAttackSpeed(atkCD2);
             tS.IncreaseBulletSpeed(slowIncrease2);
             sr.sprite = levelImages[currentLevel - 1];
+            tS.IncreaseDamage(dmg2);
         }
-        if(currentLevel == 3)
+        if (currentLevel == 3)
         {
             tS.IncreaseRange(rangeIncrease3);
             tS.IncreaseBulletSpeed(slowIncrease3);
@@ -88,6 +89,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
         if (currentLevel == 5)
         {
             tS.IncreaseAttackSpeed(atckCd5);
+            tS.IncreaseDamage(dmg5);
             sr.sprite = levelImages[currentLevel - 1];
         }
     }
@@ -140,7 +142,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 // Do damage
                 if (attackTimer <= 0)
                 {
-                    enemy.GetComponent<EnemyHealth>().TakeDamage(dmg2);
+                    enemy.GetComponent<EnemyHealth>().TakeDamage(tS.Damage);
                 }
             }
         }
@@ -163,7 +165,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 // Do damage
                 if (attackTimer <= 0)
                 {
-                    enemy.GetComponent<EnemyHealth>().TakeDamage(dmg2);
+                    enemy.GetComponent<EnemyHealth>().TakeDamage(tS.Damage);
                 }
             }
         }
@@ -186,7 +188,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 // Do damage
                 if (attackTimer <= 0)
                 {
-                    enemy.GetComponent<EnemyHealth>().TakeDamage(dmg2);
+                    enemy.GetComponent<EnemyHealth>().TakeDamage(tS.Damage);
                 }
                 if(stunTimer <= 0)
                 {
@@ -217,7 +219,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 // Do damage
                 if (attackTimer <= 0)
                 {
-                    enemy.GetComponent<EnemyHealth>().TakeDamage(dmg5);
+                    enemy.GetComponent<EnemyHealth>().TakeDamage(tS.Damage);
                 }
                 if (stunTimer <= 0)
                 {

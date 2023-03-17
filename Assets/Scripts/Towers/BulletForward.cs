@@ -25,7 +25,6 @@ public class BulletForward : MonoBehaviour, IBullet
         this.bulletSpeed = bulletSpeed * 500;
         //Debug.Log("Target Dir " + targetDir);
         rb.velocity = targetDir * bulletSpeed;
-        Debug.Log("Dmg " + this.dmg);
     }
 
     private void Update()

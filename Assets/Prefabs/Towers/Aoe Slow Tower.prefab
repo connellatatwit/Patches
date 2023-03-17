@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseRange: 6
-  baseDmg: 4
+  baseDmg: 10
   baseAttackCd: 1
   bulletSpeed: 5
   baseMaxUpgrades: 3
@@ -191,7 +191,7 @@ MonoBehaviour:
   - {fileID: -2030941877, guid: eb25774baa2ffd14ca76d7ad9741ff0f, type: 3}
   - {fileID: 1512196745, guid: eb25774baa2ffd14ca76d7ad9741ff0f, type: 3}
   slowIncrease2: 2.5
-  dmg2: 10
+  dmg2: 5
   atkCD2: 3
   slowIncrease3: 3
   rangeIncrease3: 5
