@@ -8,13 +8,13 @@ public class Inventory : MonoBehaviour
     [SerializeField] List<TowerStats> towers;
     [SerializeField] List<PassiveStatItem> statItems;
 
-    public void PickUpItem(GameObject newTower)
+    public void PickUpItem(GameObject newItem)
     {
-        newTower.GetComponent<Collider2D>().isTrigger = true;
-        Debug.Log(newTower.GetComponent<Collider2D>().isTrigger);
+        newItem.GetComponent<Collider2D>().isTrigger = true;
+        Debug.Log(newItem.GetComponent<Collider2D>().isTrigger);
         if (heldItems.Count != 0)
             heldItems[heldItems.Count - 1].SetActive(false);
-        heldItems.Add(newTower);
+        heldItems.Add(newItem);
     }
     public void GetNewItem(GameObject newItem)
     {        
