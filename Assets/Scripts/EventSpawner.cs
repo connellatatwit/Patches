@@ -17,7 +17,7 @@ public class EventSpawner : MonoBehaviour
     {
         int randReward = Random.Range(0, chestItems.Count);
         GameObject chest = Instantiate(chestPrefab.gameObject, pos, Quaternion.identity);
-        chest.GetComponent<Chest>().Init(currentWave * 10000, player, chestItems[randReward]);
+        chest.GetComponent<Chest>().Init(currentWave * 1000, player, chestItems[randReward]);
         return chest;
     }
 

@@ -10,6 +10,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
     [SerializeField] string itemDescription;
     [SerializeField] Sprite itemSprite;
     private int currentLevel = 1;
+    //private List<IArtifact> artifacts;
 
     [Header("Sprites")]
     [SerializeField] SpriteRenderer sr;
@@ -45,6 +46,8 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
 
     public float StartTime => tS.StartTime;
     public int Level => currentLevel;
+
+    //public List<IArtifact> Artifacts => artifacts;
 
     public void BeingHeld(bool held)
     {
@@ -236,4 +239,14 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
         if (stunTimer <= 0)
             stunTimer = tS.AttackCd*2;
     }
+
+/*    public void AddArtifact(IArtifact artifact)
+    {
+        artifacts.Add(artifact);
+    }
+
+    public List<IArtifact> GetArtifact()
+    {
+        return artifacts;
+    }*/
 }

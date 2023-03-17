@@ -22,6 +22,8 @@ public class TowerStats : MonoBehaviour
 
     private float startTime; // Time the tower came to existance: Used to decide which tower to kill if they are the same
 
+    private List<IArtifact> artifacts;
+
     public void InitStats()
     {
         currentDmg = baseDmg;
@@ -30,6 +32,8 @@ public class TowerStats : MonoBehaviour
         currentMaxUpgrades = baseMaxUpgrades;
         currentCritChance = baseCritChance;
         currentCritDamage = baseCritDamage;
+
+        artifacts = new List<IArtifact>();
 
         startTime = Time.time;
     }
@@ -60,6 +64,10 @@ public class TowerStats : MonoBehaviour
     public float CritDamage
     {
         get { return currentCritDamage; }
+    }
+    public List<IArtifact> Artifacts
+    {
+        get { return artifacts; }
     }
 
     public void IncreaseDamage(int amount)
@@ -111,5 +119,9 @@ public class TowerStats : MonoBehaviour
     public void AddUpgrade()
     {
         currentUpgrade++;
+    }
+    public void AddArtifact(IArtifact artifact)
+    {
+        artifacts.Add(artifact);
     }
 }

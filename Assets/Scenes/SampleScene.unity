@@ -6260,7 +6260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestItems:
-  - {fileID: 8109103352060300475, guid: ada26f4c9ab1ee2409a7fd88220f0144, type: 3}
+  - {fileID: 6097595465491628133, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
   waveForChest: 020000000400000006000000080000000a000000
   chestPrefab: {fileID: 6727258829092060170, guid: 126ec42c3137c9d4d9ebb5bf0d5db0f7, type: 3}
 --- !u!1001 &2076236124
@@ -6449,63 +6449,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d18716ef384d3147adc93960f297ed8, type: 3}
---- !u!1001 &6097595464931421358
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6097595465491628130, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097595465491628130, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097595465491628130, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097595465491628130, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.16114266
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097595465491628130, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097595465491628130, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097595465491628130, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097595465491628130, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097595465491628130, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097595465491628130, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097595465491628130, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6097595465491628133, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
-      propertyPath: m_Name
-      value: Soul Lantern
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
 --- !u!1001 &7172052669713660776
 PrefabInstance:
   m_ObjectHideFlags: 0

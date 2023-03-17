@@ -12,6 +12,8 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     [SerializeField] Sprite itemSprite;
     private int currentLevel = 1;
 
+    //private List<IArtifact> artifacts;
+
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Transform shootPos;
     private float[] attackTimer = new float[5];
@@ -42,6 +44,8 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     public Sprite ItemSprite => itemSprite;
     public float StartTime => tS.StartTime;
     public int Level => currentLevel;
+
+    //public List<IArtifact> Artifacts => artifacts;
 
     private void Start()
     {
@@ -296,4 +300,14 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     {
         beingHeld = held;
     }
+
+/*    public void AddArtifact(IArtifact artifact)
+    {
+        artifacts.Add(artifact);
+    }
+
+    public List<IArtifact> GetArtifact()
+    {
+        return artifacts;
+    }*/
 }

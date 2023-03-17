@@ -36,9 +36,15 @@ public class Chest : MonoBehaviour, NonPlayerHealth
         GameObject item = Instantiate(reward, transform.position, Quaternion.identity);
         Vector2 randomVector = new Vector2(Random.value, Random.value);
         randomVector.Normalize();
-        item.GetComponent<Rigidbody2D>().velocity = randomVector * 5;
+        item.GetComponent<Rigidbody2D>().velocity = randomVector * 2;
 
         player.GetComponent<PlayerPointer>().SetTarget(item.transform);
-        
+        StartCoroutine(DieChest());
+    }
+
+    private IEnumerator DieChest()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }

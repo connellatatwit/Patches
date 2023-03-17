@@ -24,6 +24,11 @@ public class TowerMixer : MonoBehaviour
                     if(collision.transform.GetComponent<ITower>().name == GetComponent<ITower>().name)
                     {
                         //Level up
+                        List<IArtifact> temp = collision.gameObject.GetComponent<TowerStats>().Artifacts;
+                        for (int i = 0; i < temp.Count; i++)
+                        {
+                            temp[i].AttachArtifact(gameObject);
+                        }
                         Destroy(collision.gameObject);
                         GetComponent<ITower>().LevelUp();
                         Instantiate(anim, transform.position, Quaternion.identity);
