@@ -82,11 +82,7 @@ public class WaveSpawner : MonoBehaviour
 
     private void CheckEvent()
     {
-        if (es.IsChestEvent(currWave))
-        {
-            GameObject chest = es.SpawnChest(RandomPointOnCircleEdge(50f), currWave);
-            player.GetComponent<PlayerPointer>().SetTarget(chest.transform);
-        }
+        es.CheckIfEvent(currWave);
     }
     public void GenerateWave()
     {
