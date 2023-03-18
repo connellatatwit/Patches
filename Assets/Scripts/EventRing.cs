@@ -15,7 +15,8 @@ public class EventRing : MonoBehaviour
     [SerializeField] string targetLayer; 
     [SerializeField] bool isTimer;
     [SerializeField] float lifeTimer;
-    [SerializeField] float timer;
+    [SerializeField] float baseTimer;
+    private float currentTimer;
     private bool beingUsed;
 
     private ParticleSystem ps;
@@ -47,7 +48,8 @@ public class EventRing : MonoBehaviour
 
     private void Start()
     {
-        lifeTimer = timer * 2f;
+        lifeTimer = baseTimer * 2f;
+        currentTimer = baseTimer;
         ps = GetComponent<ParticleSystem>();
     }
 
@@ -57,8 +59,10 @@ public class EventRing : MonoBehaviour
         {
             if (beingUsed)
             {
-                timer -= Time.deltaTime;
-                if(timer <= 0)
+                currentTimer -= Time.deltaTime;
+                var str = ps.noise;
+                str.strength = (-(.33f / baseTimer) * currentTimer) + .33f;
+                if(currentTimer <= 0)
                 {
                     Debug.Log("Succeeded!");
                     Destroy(gameObject);

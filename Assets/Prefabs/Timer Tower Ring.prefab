@@ -4845,4 +4845,4 @@ MonoBehaviour:
   targetLayer: Tower
   isTimer: 1
   lifeTimer: 0
-  timer: 15
+  baseTimer: 15
