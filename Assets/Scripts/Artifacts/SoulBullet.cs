@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class SoulBullet : MonoBehaviour, IBullet
 {
-    [SerializeField] int dmg;
-    [SerializeField] float speed;
     private Transform currentTarget;
     private LayerMask enemyLayer = (1 << 11);
 
     private float lifeTime = 10f;
 
+    private BulletStats bs;
+
     public void InitBullet(Transform target, int dmg, float bulletSpeed)
     {
-        this.speed = bulletSpeed;
-        this.dmg = dmg;
+        bs = GetComponent<BulletStats>();
+        bs.speed = bulletSpeed;
+        bs.dmg = dmg;
     }
 
     private void Update()
@@ -23,7 +24,7 @@ public class SoulBullet : MonoBehaviour, IBullet
 
         if(currentTarget != null)
         {
-            transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, bs.speed * Time.deltaTime);
         }
         else
         {
@@ -58,7 +59,7 @@ public class SoulBullet : MonoBehaviour, IBullet
     {
         if (collision.gameObject.layer == 11)
         {
-            collision.GetComponent<NonPlayerHealth>().TakeDamage(dmg);
+            collision.GetComponent<NonPlayerHealth>().TakeDamage(bs.dmg);
             Destroy(gameObject);
         }
     }

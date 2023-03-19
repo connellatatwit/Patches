@@ -30,7 +30,7 @@ public class SoulLanternTracker : MonoBehaviour
         {
             if (!this.gameObject.scene.isLoaded) return;
             GameObject bullet = Instantiate(flameBulletPrefab, transform.position, Quaternion.identity);
-            bullet.GetComponent<SoulBullet>().InitBullet(null, dmg, speed/2);
+            bullet.GetComponent<IBullet>().InitBullet(null, dmg, speed/2);
         }
     }
     void OnDisable()

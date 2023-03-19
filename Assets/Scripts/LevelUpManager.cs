@@ -69,7 +69,8 @@ public class LevelUpManager : MonoBehaviour
         else if(itemList[currentSelectedItem].GetComponent<PassiveStatItem>() != null)
         {
             GameObject newItem = Instantiate(itemList[currentSelectedItem]);
-            player.GetComponent<Inventory>().AddStatToTurrets(itemList[currentSelectedItem].GetComponent<PassiveStatItem>());
+            newItem.GetComponent<PassiveStatItem>().Init();
+            player.GetComponent<Inventory>().AddStatToTurrets(newItem.GetComponent<PassiveStatItem>());
         }
     }
     public void LevelUp(bool a5)

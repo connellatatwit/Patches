@@ -5,23 +5,24 @@ using UnityEngine;
 public class Bullet : MonoBehaviour, IBullet
 {
     private Transform target;
-    private int dmg;
-    private float bulletSpeed;
 
     private float deathTimer = .5f;
     [SerializeField] LayerMask enemyLayer = (1 << 11);
+    private BulletStats bs;
 
     public void InitBullet(Transform target, int dmg, float bulletSpeed)
     {
         this.target = target;
-        this.dmg = dmg;
-        this.bulletSpeed = bulletSpeed;
+        bs.dmg = dmg;
+        bs.speed = bulletSpeed;
+        bs = GetComponent<BulletStats>();
+
     }
     private void Update()
     {
         if(target != null)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, bulletSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, bs.speed * Time.deltaTime);
         }
         else
         {
@@ -37,7 +38,7 @@ public class Bullet : MonoBehaviour, IBullet
     {
         if(collision.gameObject.layer == 11)
         {
-            collision.GetComponent<NonPlayerHealth>().TakeDamage(dmg);
+            collision.GetComponent<NonPlayerHealth>().TakeDamage(bs.dmg);
             Destroy(gameObject);
         }
     }

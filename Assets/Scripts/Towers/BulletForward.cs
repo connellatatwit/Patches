@@ -6,23 +6,23 @@ public class BulletForward : MonoBehaviour, IBullet
 {
     private Transform target;
     private Vector2 targetDir;
-    private int dmg;
-    private float bulletSpeed;
 
     private float deathTimer = 10f;
     [SerializeField] LayerMask enemyLayer = (1 << 11);
 
     private Rigidbody2D rb;
+    private BulletStats bs;
 
     public void InitBullet(Transform target, int dmg, float bulletSpeed)
     {
+        bs = GetComponent<BulletStats>();
         rb = GetComponent<Rigidbody2D>();
         this.target = target;
         targetDir = new Vector2();
         targetDir = target.position - transform.position;
         targetDir.Normalize();
-        this.dmg = dmg;
-        this.bulletSpeed = bulletSpeed * 500;
+        bs.dmg = dmg;
+        bs.speed = bulletSpeed * 500;
         //Debug.Log("Target Dir " + targetDir);
         rb.velocity = targetDir * bulletSpeed;
     }
@@ -39,7 +39,7 @@ public class BulletForward : MonoBehaviour, IBullet
     {
         if (collision.gameObject.layer == 11)
         {
-            collision.GetComponent<NonPlayerHealth>().TakeDamage(dmg);
+            collision.GetComponent<NonPlayerHealth>().TakeDamage(bs.dmg);
             Destroy(gameObject);
         }
     }

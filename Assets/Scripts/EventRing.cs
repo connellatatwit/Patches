@@ -29,6 +29,8 @@ public class EventRing : MonoBehaviour
     public UnityEvent thisEvent = new UnityEvent();
 
     private ParticleSystem ps;
+
+    private bool bugFix = false;
     public bool Finished
     {
         get { return finished; }
@@ -67,6 +69,8 @@ public class EventRing : MonoBehaviour
         lifeTimer = baseTimer * 2f;
         currentTimer = baseTimer;
         ps = GetComponent<ParticleSystem>();
+
+        bugFix = true;
     }
 
     private void Update()
@@ -109,20 +113,26 @@ public class EventRing : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(LayerMask.LayerToName(collision.gameObject.layer) == targetLayer)
+        if (bugFix)
         {
-            beingUsed = true;
-            var ma = ps.main;
-            ma.startColor = grad;
+            if (LayerMask.LayerToName(collision.gameObject.layer) == targetLayer)
+            {
+                beingUsed = true;
+                var ma = ps.main;
+                ma.startColor = grad;
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (LayerMask.LayerToName(collision.gameObject.layer) == targetLayer)
+        if (bugFix)
         {
-            beingUsed = false;
-            var ma = ps.main;
-            ma.startColor = oriGrad;
+            if (LayerMask.LayerToName(collision.gameObject.layer) == targetLayer)
+            {
+                beingUsed = false;
+                var ma = ps.main;
+                ma.startColor = oriGrad;
+            }
         }
     }
 }

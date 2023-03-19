@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseRange: 20
-  baseDmg: 100
+  baseDmg: 20
   baseAttackCd: 0.8
   bulletSpeed: 15
   baseMaxUpgrades: 3

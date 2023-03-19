@@ -64,39 +64,63 @@ public class Inventory : MonoBehaviour
         ApplyOldBuffs(newTower);
     }
 
+    public void LevelUpItem(PassiveStatItem passiveStatItem)
+    {
+        passiveStatItem.LevelUp();
+        ApplyPassiveStatItem(passiveStatItem);
+    }
     public void AddStatToTurrets(PassiveStatItem passiveStatItem)
     {
-        statItems.Add(passiveStatItem);
         towers.RemoveAll(x => !x);
+        if (!CheckDuplicate(passiveStatItem))
+        {
+            statItems.Add(passiveStatItem);
 
+            ApplyPassiveStatItem(passiveStatItem);
+        }
+    }
+    private void ApplyPassiveStatItem(PassiveStatItem passiveStatItem)
+    {
         for (int i = 0; i < towers.Count; i++)
         {
             //towers[i].GetComponent<TowerStats>().AddUpgrade();
             if (passiveStatItem.targetStat == TargetStat.Damage)
             {
-                towers[i].GetComponent<TowerStats>().IncreaseDamage(Mathf.RoundToInt(passiveStatItem.increase));
+                towers[i].GetComponent<TowerStats>().IncreaseDamage(Mathf.RoundToInt(passiveStatItem.GetCurrentIncrease()));
             }
             else if (passiveStatItem.targetStat == TargetStat.Range)
             {
-                towers[i].GetComponent<TowerStats>().IncreaseRange(passiveStatItem.increase);
+                towers[i].GetComponent<TowerStats>().IncreaseRange(passiveStatItem.GetCurrentIncrease());
             }
             else if (passiveStatItem.targetStat == TargetStat.AttackSpeed)
             {
-                towers[i].GetComponent<TowerStats>().IncreaseAttackSpeed(passiveStatItem.increase);
+                towers[i].GetComponent<TowerStats>().IncreaseAttackSpeed(passiveStatItem.GetCurrentIncrease());
             }
             else if (passiveStatItem.targetStat == TargetStat.BulletSpeed)
             {
-                towers[i].GetComponent<TowerStats>().IncreaseBulletSpeed(passiveStatItem.increase);
+                towers[i].GetComponent<TowerStats>().IncreaseBulletSpeed(passiveStatItem.GetCurrentIncrease());
             }
             else if (passiveStatItem.targetStat == TargetStat.CritChance)
             {
-                towers[i].GetComponent<TowerStats>().IncreaseCritChance(passiveStatItem.increase);
+                towers[i].GetComponent<TowerStats>().IncreaseCritChance(passiveStatItem.GetCurrentIncrease());
             }
             else if (passiveStatItem.targetStat == TargetStat.CritDamage)
             {
-                towers[i].GetComponent<TowerStats>().IncreaseCritDmg(passiveStatItem.increase);
+                towers[i].GetComponent<TowerStats>().IncreaseCritDmg(passiveStatItem.GetCurrentIncrease());
             }
         }
+    }
+    private bool CheckDuplicate(PassiveStatItem item)
+    {
+        for (int i = 0; i < statItems.Count; i++)
+        {
+            if(statItems[i].name == item.name)
+            {
+                LevelUpItem(statItems[i]);
+                return true;
+            }
+        }
+        return false;
     }
     private void ApplyOldBuffs(GameObject newTower)
     {
@@ -105,7 +129,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < statItems.Count; i++)
         {
             Debug.Log("Adding the item... " + statItems[i].name + " with the targetStat is... " + statItems[i].targetStat);
-            HandleStatIncrease(newTower, statItems[i].targetStat, statItems[i].increase);
+            HandleStatIncrease(newTower, statItems[i].targetStat, statItems[i].Increase);
         }
     }
     private void HandleStatIncrease(GameObject target, TargetStat targetStat, float statIncreaseAmount)

@@ -45,7 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Ave Goggles
-  itemDescription: Increase Towers eye-sight
   itemSprite: {fileID: 0}
   targetStat: 1
-  increase: 2
+  increase1: 1
+  increase2: 1
+  increase3: 1
+  increase4: 1
+  increase5: 1
+  currentItemDescription: Increases your towers range slightly
