@@ -26,8 +26,12 @@ public class EventSpawner : MonoBehaviour
     private int currentIteration = 0;
 
     private Transform player;
+
+    private List<EventRing> rings;
+
     private void Start()
     {
+        rings = new List<EventRing>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         InitEvents();
     }
@@ -86,7 +90,14 @@ public class EventSpawner : MonoBehaviour
     }
 
 
-
+    private void KillRings()
+    {
+        for (int i = 0; i < rings.Count; i++)
+        {
+            Destroy(rings[i].gameObject);
+        }
+        rings.Clear();
+    }
     private bool CheckIfWaveFilled(int wave)
     {
         for (int i = 0; i < waveEvents.Count; i++)
@@ -119,7 +130,7 @@ public class EventSpawner : MonoBehaviour
     {
         if(eventType.eventType == WaveEventType.Chest)
         {
-            SpawnChest(eventType.waveOccurance);
+            SpawnChest(eventType.waveOccurance, 50f);
         }
         else if(eventType.eventType == WaveEventType.TowerTimer)
         {
@@ -130,16 +141,17 @@ public class EventSpawner : MonoBehaviour
     {
         int randReward = Random.Range(0, chestItems.Count);
         GameObject chest = Instantiate(chestPrefab.gameObject, pos, Quaternion.identity);
-        chest.GetComponent<Chest>().Init(currentWave * 1000, player, chestItems[randReward]);
+        chest.GetComponent<Chest>().Init((currentWave * 1000)+10, player, chestItems[randReward]);
         return chest;
     }
-    private void SpawnChest(int wave)
+    private void SpawnChest(int wave, float distance)
     {
-        GameObject chest = SpawnChest(RandomPointOnCircleEdge(50f), wave);
+        GameObject chest = SpawnChest(RandomPointOnCircleEdge(distance), wave);
         player.GetComponent<PlayerPointer>().SetTarget(chest.transform);
     }
     private void SpawnTowerTimer(int wave)
     {
+        KillRings();
         Debug.Log(wave);
         int amountOfRings = Mathf.Clamp(wave, 2, 5);
         Debug.Log("Amount of rings " + amountOfRings);
@@ -147,6 +159,8 @@ public class EventSpawner : MonoBehaviour
         {
             GameObject ring = Instantiate(ringTimerPrefab, RandomPointOnCircleEdge(i+3), Quaternion.identity);
             ring.transform.eulerAngles = new Vector3(90, 0, 0);
+            rings.Add(ring.GetComponent<EventRing>());
+            ring.GetComponent<EventRing>().thisEvent.AddListener(() => CheckIfRingsAreDone());
         }
     }
     private Vector3 RandomPointOnCircleEdge(float radius)
@@ -155,6 +169,42 @@ public class EventSpawner : MonoBehaviour
         Vector3 newPos = new Vector3(vector2.x, vector2.y, 0);
         newPos += player.position;
         return newPos;
+    }
+
+    private void CheckIfRingsAreDone()
+    {
+        bool allGood = true;
+        bool allDone = true;
+        for (int i = 0; i < rings.Count; i++)
+        {
+            if (rings[i].Finished)
+            {
+                if (!rings[i].Succeeded)
+                {
+                    allGood = false;
+                    break;
+                }
+            }
+            else
+            {
+                allGood = false;
+                allDone = false;
+            }
+        }
+        if (allGood)
+        {
+            Debug.Log("THE PLAYER DID IT ::::: THEY WON THE RING THING");
+            RingsBeaten();
+            return;
+        }
+        if (allDone)
+        {
+            Debug.Log("Player Lost the Ring Challenge");
+        }
+    }
+    private void RingsBeaten()
+    {
+        SpawnChest(0, 3);
     }
 }
 [System.Serializable]

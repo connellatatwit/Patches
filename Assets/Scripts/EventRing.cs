@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum EventRingType
 {
@@ -12,6 +13,9 @@ public enum EventRingType
 
 public class EventRing : MonoBehaviour
 {
+    [SerializeField] Gradient grad;
+    [SerializeField] Gradient oriGrad;
+
     [SerializeField] string targetLayer; 
     [SerializeField] bool isTimer;
     [SerializeField] float lifeTimer;
@@ -19,8 +23,20 @@ public class EventRing : MonoBehaviour
     private float currentTimer;
     private bool beingUsed;
 
-    private ParticleSystem ps;
+    private bool finished = false;
+    private bool succeeded;
 
+    public UnityEvent thisEvent = new UnityEvent();
+
+    private ParticleSystem ps;
+    public bool Finished
+    {
+        get { return finished; }
+    }
+    public bool Succeeded
+    {
+        get { return succeeded; }
+    }
     /*    public void InitRing(EventRingType type)
         {
             if (type == EventRingType.PlayerTimer || type == EventRingType.PlayerTap)
@@ -55,26 +71,37 @@ public class EventRing : MonoBehaviour
 
     private void Update()
     {
-        if (isTimer)
+        if (!finished)
         {
-            if (beingUsed)
+            if (isTimer)
             {
-                currentTimer -= Time.deltaTime;
-                var str = ps.noise;
-                str.strength = (-(.33f / baseTimer) * currentTimer) + .33f;
-                if(currentTimer <= 0)
+                if (beingUsed)
                 {
-                    Debug.Log("Succeeded!");
-                    Destroy(gameObject);
+                    currentTimer -= Time.deltaTime;
+                    var str = ps.noise;
+                    str.strength = (-(.33f / baseTimer) * currentTimer) + .33f;
+                    if (currentTimer <= 0)
+                    {
+                        Debug.Log("Succeeded!");
+                        ps.Stop();
+                        ps.Clear();
+                        succeeded = true;
+                        finished = true;
+                        thisEvent.Invoke();
+                    }
                 }
-            }
-            else
-            {
-                lifeTimer -= Time.deltaTime;
-                if(lifeTimer <= 0)
+                else
                 {
-                    Debug.Log("Failed!");
-                    Destroy(gameObject);
+                    lifeTimer -= Time.deltaTime;
+                    if (lifeTimer <= 0)
+                    {
+                        Debug.Log("Failed!");
+                        ps.Stop();
+                        ps.Clear();
+                        succeeded = false;
+                        finished = true;
+                        thisEvent.Invoke();
+                    }
                 }
             }
         }
@@ -85,6 +112,8 @@ public class EventRing : MonoBehaviour
         if(LayerMask.LayerToName(collision.gameObject.layer) == targetLayer)
         {
             beingUsed = true;
+            var ma = ps.main;
+            ma.startColor = grad;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -92,6 +121,8 @@ public class EventRing : MonoBehaviour
         if (LayerMask.LayerToName(collision.gameObject.layer) == targetLayer)
         {
             beingUsed = false;
+            var ma = ps.main;
+            ma.startColor = oriGrad;
         }
     }
 }
