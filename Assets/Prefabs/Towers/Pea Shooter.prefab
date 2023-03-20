@@ -237,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16337884c44f03b49a89f974f510eb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseRange: 20
+  baseRange: 6
   baseDmg: 20
   baseAttackCd: 0.8
   bulletSpeed: 15
