@@ -21,6 +21,7 @@ public class PlanetStation : MonoBehaviour, IItem, ITower
     [SerializeField] float sizeIncrease2;
     [Header("Level 3")]
     [SerializeField] int dmgIncrease3;
+    private bool push = false;
     [Header("Level 4")]
     [Header("Level 5")]
     [SerializeField] float sizeIncrease5;
@@ -43,6 +44,7 @@ public class PlanetStation : MonoBehaviour, IItem, ITower
     private void Start()
     {
         tS = GetComponent<TowerStats>();
+        push = false;
     }
     public void LevelUp()
     {
@@ -60,6 +62,7 @@ public class PlanetStation : MonoBehaviour, IItem, ITower
         if (currentLevel == 3)
         {
             tS.IncreaseDamage(dmgIncrease3);
+            push = true;
         }
         if (currentLevel == 4)
         {
@@ -104,7 +107,7 @@ public class PlanetStation : MonoBehaviour, IItem, ITower
             attackTimer = tS.AttackCd;
             GameObject moon = Instantiate(debriPrefabs[0], transform);
             moon.transform.position = new Vector2(transform.position.x + orbitStartPos[0].x*tS.Range, transform.position.y + orbitStartPos[0].y* tS.Range);
-            moon.GetComponent<SpaceDebri>().Init(transform, tS);
+            moon.GetComponent<SpaceDebri>().Init(transform, tS, push);
         }
     }
     private void Level2Effect()
@@ -117,7 +120,7 @@ public class PlanetStation : MonoBehaviour, IItem, ITower
             {
                 GameObject moon = Instantiate(debriPrefabs[i], transform);
                 moon.transform.position = new Vector2(transform.position.x + orbitStartPos[i].x * tS.Range, transform.position.y + orbitStartPos[i].y * tS.Range);
-                moon.GetComponent<SpaceDebri>().Init(transform, tS);
+                moon.GetComponent<SpaceDebri>().Init(transform, tS, push);
             }
             attackTimer = tS.AttackCd;
         }
@@ -133,7 +136,7 @@ public class PlanetStation : MonoBehaviour, IItem, ITower
             {
                 GameObject moon = Instantiate(debriPrefabs[i], transform);
                 moon.transform.position = new Vector2(transform.position.x + orbitStartPos[i].x * tS.Range, transform.position.y + orbitStartPos[i].y * tS.Range);
-                moon.GetComponent<SpaceDebri>().Init(transform, tS);
+                moon.GetComponent<SpaceDebri>().Init(transform, tS, push);
             }
             attackTimer = tS.AttackCd;
         }
@@ -148,7 +151,7 @@ public class PlanetStation : MonoBehaviour, IItem, ITower
             {
                 GameObject moon = Instantiate(debriPrefabs[i], transform);
                 moon.transform.position = new Vector2(transform.position.x + orbitStartPos[i].x * tS.Range, transform.position.y + orbitStartPos[i].y * tS.Range);
-                moon.GetComponent<SpaceDebri>().Init(transform, tS);
+                moon.GetComponent<SpaceDebri>().Init(transform, tS, push);
             }
             attackTimer = tS.AttackCd;
         }
@@ -163,7 +166,7 @@ public class PlanetStation : MonoBehaviour, IItem, ITower
             {
                 GameObject moon = Instantiate(debriPrefabs[i], transform);
                 moon.transform.position = new Vector2(transform.position.x + orbitStartPos[i].x * tS.Range, transform.position.y + orbitStartPos[i].y * tS.Range);
-                moon.GetComponent<SpaceDebri>().Init(transform, tS);
+                moon.GetComponent<SpaceDebri>().Init(transform, tS, push);
             }
             attackTimer = tS.AttackCd;
         }
