@@ -185,7 +185,7 @@ MonoBehaviour:
   baseRange: 2
   baseDmg: 25
   baseAttackCd: 2
-  bulletSpeed: 5
+  bulletSpeed: 4
   baseMaxUpgrades: 3
   baseCritChance: 5
   baseCritDamage: 1.2
