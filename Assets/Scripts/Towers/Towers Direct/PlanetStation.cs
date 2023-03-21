@@ -20,6 +20,7 @@ public class PlanetStation : MonoBehaviour, IItem, ITower
     [Header("Level 2")]
     [SerializeField] float sizeIncrease2;
     [Header("Level 3")]
+    [SerializeField] int dmgIncrease3;
     [Header("Level 4")]
     [Header("Level 5")]
     [SerializeField] float sizeIncrease5;
@@ -58,7 +59,7 @@ public class PlanetStation : MonoBehaviour, IItem, ITower
         }
         if (currentLevel == 3)
         {
-
+            tS.IncreaseDamage(dmgIncrease3);
         }
         if (currentLevel == 4)
         {

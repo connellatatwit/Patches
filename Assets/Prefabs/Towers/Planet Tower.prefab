@@ -185,7 +185,7 @@ MonoBehaviour:
   baseRange: 2
   baseDmg: 25
   baseAttackCd: 2
-  bulletSpeed: 4
+  bulletSpeed: 3.5
   baseMaxUpgrades: 3
   baseCritChance: 5
   baseCritDamage: 1.2
@@ -215,6 +215,7 @@ MonoBehaviour:
   - {fileID: 7103110456391734791, guid: e72d3a20063896f40ae5be8d09b13b19, type: 3}
   - {fileID: 7103110456391734791, guid: e72d3a20063896f40ae5be8d09b13b19, type: 3}
   sizeIncrease2: 1
+  dmgIncrease3: 15
   sizeIncrease5: 3
 --- !u!50 &1110952562760375018
 Rigidbody2D:
