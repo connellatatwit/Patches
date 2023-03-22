@@ -39,7 +39,6 @@ public class SunGlassesAttachment : MonoBehaviour
         }
         else
         {
-            Debug.Log(transform.eulerAngles.z);
             if(transform.eulerAngles.z > 270)
             {
                 sr.flipY = false;

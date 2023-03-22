@@ -15,7 +15,7 @@ public class LevelUpManager : MonoBehaviour
     private bool selecting = false;
     [Header("Prefabs")]
     [SerializeField] List<GameObject> levelUpRewards;
-    private bool itemIsATurret;
+    [SerializeField] List<GameObject> levelOneOptions;
 
     private void Start()
     {
@@ -75,12 +75,23 @@ public class LevelUpManager : MonoBehaviour
     }
     public void LevelUp(bool a5)
     {
-        itemIsATurret = a5;
-        levelPanel.SetActive(true);
-        Time.timeScale = 0;
-        SetItemPanels();
-        currentSelectedItem = 0;
-        selecting = true;
+        if (!a5)
+        {
+            //itemIsATurret = a5;
+            levelPanel.SetActive(true);
+            Time.timeScale = 0;
+            SetItemPanels();
+            currentSelectedItem = 0;
+            selecting = true;
+        }
+        else
+        {
+            levelPanel.SetActive(true);
+            Time.timeScale = 0;
+            SetLevelOneOptions();
+            currentSelectedItem = 0;
+            selecting = true;
+        }
     }
 
     /*public void SetItemPanels()
@@ -114,6 +125,23 @@ public class LevelUpManager : MonoBehaviour
         itemList.Add(levelUpRewards[randomList[0]]);
         itemList.Add(levelUpRewards[randomList[1]]);
         itemList.Add(levelUpRewards[randomList[2]]);
+
+        // Set all three panels
+        for (int i = 0; i < itemPanels.Count; i++)
+        {
+            // Set panels
+            itemPanels[i].SetInformation(itemList[i]);
+            itemPanels[i].SetSelected(false);
+        }
+        itemPanels[0].SetSelected(true);
+    }
+    private void SetLevelOneOptions()
+    {
+        GenerateRandomList(levelOneOptions);
+        itemList.Clear();
+        itemList.Add(levelOneOptions[randomList[0]]);
+        itemList.Add(levelOneOptions[randomList[1]]);
+        itemList.Add(levelOneOptions[randomList[2]]);
 
         // Set all three panels
         for (int i = 0; i < itemPanels.Count; i++)

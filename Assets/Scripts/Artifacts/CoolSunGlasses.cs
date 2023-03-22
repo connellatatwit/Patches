@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CoolSunGlasses : MonoBehaviour, IArtifact
 {
+    [SerializeField] int dmgIncrease;
     [SerializeField] GameObject sunGlassesAttachmentPrefab;
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,6 +21,7 @@ public class CoolSunGlasses : MonoBehaviour, IArtifact
         attachment.GetComponent<SunGlassesAttachment>().Init(tower.transform);
         attachment.transform.position += new Vector3(0, .5f);
         tower.GetComponent<TowerStats>().AddArtifact(this);
+        tower.GetComponent<TowerStats>().IncreaseDamage(dmgIncrease);
         Destroy(GetComponent<Collider2D>());
         transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = null;
     }

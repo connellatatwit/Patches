@@ -12,6 +12,7 @@ public class SpaceDebri : MonoBehaviour
     private Vector2 pushDistance;
 
     private bool push;
+    private Vector3 offset = new Vector2(0, .5f);
     public void Init(Transform pivot, TowerStats ts, bool push)
     {
         timer = .1f;
@@ -20,14 +21,12 @@ public class SpaceDebri : MonoBehaviour
         localStart = transform.localPosition;
         transform.localScale = new Vector3(ts.Range / 2, ts.Range / 2, 1);
         this.push = push;
-
-
     }
     private void Update()
     {
         if (pivot != null)
         {
-            transform.RotateAround(pivot.position + new Vector3(0, .5f), new Vector3(0, 0, 1), ts.BulletSpeed * 100f * Time.deltaTime);
+            transform.RotateAround(pivot.position, new Vector3(0, 0, 1), ts.BulletSpeed * 100f * Time.deltaTime);
             if(Vector2.Distance(transform.localPosition, localStart) <= .1 && timer <= 0)
             {
                 Destroy(gameObject);
@@ -45,7 +44,7 @@ public class SpaceDebri : MonoBehaviour
             {
                 if (!push)
                     pushDistance = Vector2.zero;
-                else
+                else if (collision.GetComponent<EnemyFollowPlayer>() != null)
                 {
                     pushDistance = (collision.transform.position - pivot.position).normalized * (ts.Damage/2);
                     collision.GetComponent<EnemyFollowPlayer>().Push(pushDistance, .2f);

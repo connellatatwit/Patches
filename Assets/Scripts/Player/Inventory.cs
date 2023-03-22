@@ -11,7 +11,6 @@ public class Inventory : MonoBehaviour
     public void PickUpItem(GameObject newItem)
     {
         newItem.GetComponent<Collider2D>().isTrigger = true;
-        Debug.Log(newItem.GetComponent<Collider2D>().isTrigger);
         if (heldItems.Count != 0)
             heldItems[heldItems.Count - 1].SetActive(false);
         heldItems.Add(newItem);
@@ -124,11 +123,9 @@ public class Inventory : MonoBehaviour
     }
     private void ApplyOldBuffs(GameObject newTower)
     {
-        Debug.Log("Target Tower is... " + newTower.name);
         // Increase stats for every start items
         for (int i = 0; i < statItems.Count; i++)
         {
-            Debug.Log("Adding the item... " + statItems[i].name + " with the targetStat is... " + statItems[i].targetStat);
             HandleStatIncrease(newTower, statItems[i].targetStat, statItems[i].Increase);
         }
     }

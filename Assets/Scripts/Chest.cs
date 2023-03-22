@@ -34,17 +34,16 @@ public class Chest : MonoBehaviour, NonPlayerHealth
     {
         Debug.Log("KACHING");
         GameObject item = Instantiate(reward, transform.position, Quaternion.identity);
-        Vector2 randomVector = new Vector2(Random.value, Random.value);
-        randomVector.Normalize();
-        item.GetComponent<Rigidbody2D>().velocity = randomVector * 2;
+        StartCoroutine(DieChest(item));
 
         player.GetComponent<PlayerPointer>().SetTarget(item.transform);
-        StartCoroutine(DieChest());
     }
 
-    private IEnumerator DieChest()
+    private IEnumerator DieChest(GameObject item)
     {
+        item.GetComponent<Collider2D>().isTrigger = true;
         yield return new WaitForSeconds(1f);
+        item.GetComponent<Collider2D>().isTrigger = false;
         Destroy(gameObject);
     }
 }
