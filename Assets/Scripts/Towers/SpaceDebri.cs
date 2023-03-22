@@ -48,8 +48,8 @@ public class SpaceDebri : MonoBehaviour
                 else
                 {
                     pushDistance = (collision.transform.position - pivot.position).normalized * (ts.Damage/2);
+                    collision.GetComponent<EnemyFollowPlayer>().Push(pushDistance, .2f);
                 }
-                collision.GetComponent<EnemyFollowPlayer>().Push(pushDistance, .2f);
             }
         }
     }

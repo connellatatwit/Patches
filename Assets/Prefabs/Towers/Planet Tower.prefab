@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16337884c44f03b49a89f974f510eb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseRange: 2
+  baseRange: 3
   baseDmg: 25
   baseAttackCd: 2
   bulletSpeed: 3.5

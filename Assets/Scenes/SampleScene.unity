@@ -6262,6 +6262,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chestItems:
   - {fileID: 6097595465491628133, guid: 45f3fdd0a74352b4eacbfbe7cc319073, type: 3}
+  - {fileID: 1287967998097400567, guid: d2f784c099555864b8f150a6681549f1, type: 3}
+  - {fileID: 5309707010584753242, guid: 13f18e9cc80e207418ef566ff760b212, type: 3}
   minEvents: 2
   maxEvents: 6
   waveEvents: []
