@@ -17,6 +17,7 @@ public class LevelUpManager : MonoBehaviour
     [SerializeField] List<GameObject> levelUpRewards;
     [SerializeField] List<GameObject> levelOneOptions;
 
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");

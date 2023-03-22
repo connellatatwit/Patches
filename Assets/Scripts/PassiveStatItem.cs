@@ -34,6 +34,11 @@ public class PassiveStatItem : MonoBehaviour, IItem
     {
         throw new System.NotImplementedException();
     }
+    public int Level
+    {
+        get { return currentLevel; }
+    }
+
     public void Init()
     {
         currentIncrease = increase1;

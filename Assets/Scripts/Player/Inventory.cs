@@ -8,12 +8,18 @@ public class Inventory : MonoBehaviour
     [SerializeField] List<TowerStats> towers;
     [SerializeField] List<PassiveStatItem> statItems;
 
+    [SerializeField] List<BeltItemIcon> beltItemIcons;
+
+    [SerializeField] GameObject heldIconPrefab;
+    [SerializeField] Transform heldIconparent;
+
     public void PickUpItem(GameObject newItem)
     {
         newItem.GetComponent<Collider2D>().isTrigger = true;
         if (heldItems.Count != 0)
             heldItems[heldItems.Count - 1].SetActive(false);
         heldItems.Add(newItem);
+        AddHeldIcon(newItem);
     }
     public void GetNewItem(GameObject newItem)
     {        
@@ -27,6 +33,7 @@ public class Inventory : MonoBehaviour
     public void DropItem()
     {
         heldItems.RemoveAt(heldItems.Count-1);
+        RemoveHeldIcon();
     }
     public GameObject GetNextItem()
     {
@@ -63,19 +70,40 @@ public class Inventory : MonoBehaviour
         ApplyOldBuffs(newTower);
     }
 
+    private void AddHeldIcon(GameObject item)
+    {
+        GameObject temp = Instantiate(heldIconPrefab, heldIconparent);
+        temp.GetComponent<HeldIcon>().InitIcon(item.GetComponent<IItem>().ItemSprite);
+    }
+    private void RemoveHeldIcon()
+    {
+        Destroy(heldIconparent.GetChild(heldIconparent.childCount-1).gameObject);
+    }
     public void LevelUpItem(PassiveStatItem passiveStatItem)
     {
+        // HERE
         passiveStatItem.LevelUp();
         ApplyPassiveStatItem(passiveStatItem);
     }
     public void AddStatToTurrets(PassiveStatItem passiveStatItem)
     {
+        // HERE
         towers.RemoveAll(x => !x);
         if (!CheckDuplicate(passiveStatItem))
         {
             statItems.Add(passiveStatItem);
 
             ApplyPassiveStatItem(passiveStatItem);
+        }
+        UpdateIcons();
+    }
+
+    private void UpdateIcons()
+    {
+        for (int i = 0; i < statItems.Count; i++)
+        {
+            beltItemIcons[i].gameObject.SetActive(true);
+            beltItemIcons[i].SetInformation(statItems[i].ItemSprite, statItems[i].Level);
         }
     }
     private void ApplyPassiveStatItem(PassiveStatItem passiveStatItem)

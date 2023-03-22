@@ -385,6 +385,9 @@ MonoBehaviour:
   heldItems: []
   towers: []
   statItems: []
+  beltItemIcons: []
+  heldIconPrefab: {fileID: 6641976178298626583, guid: c673359f1ca0a194885becabbc6d05b5, type: 3}
+  heldIconparent: {fileID: 0}
 --- !u!114 &7172052668331005493
 MonoBehaviour:
   m_ObjectHideFlags: 0
