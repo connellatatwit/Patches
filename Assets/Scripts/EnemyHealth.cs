@@ -12,9 +12,10 @@ public class EnemyHealth : MonoBehaviour, NonPlayerHealth
         eS = GetComponent<EnemyStats>();
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(TowerStats ts)
     {
-        eS.TakeDamage(amount);
+        // TODO, IMPLEMETN CRIT
+        eS.TakeDamage(ts.Damage);
         if(eS.Health <= 0)
         {
             Die();

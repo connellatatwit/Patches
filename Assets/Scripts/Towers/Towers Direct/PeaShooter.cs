@@ -251,17 +251,7 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
         {
             bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
         }
-        int critRoll = Random.Range(1, 101);
-        if(critRoll <= tS.CritChance)
-        {
-            // Crit
-            bullet.GetComponent<IBullet>().InitBullet(currentTargets[index].transform, Mathf.RoundToInt(tS.Damage * tS.CritDamage), tS.BulletSpeed);
-        }
-        else
-        {
-            // No Crit
-            bullet.GetComponent<IBullet>().InitBullet(currentTargets[index].transform, tS.Damage, tS.BulletSpeed);
-        }
+        bullet.GetComponent<IBullet>().InitBullet(currentTargets[index].transform, tS);
     }
     void FindTarget(int index)
     {

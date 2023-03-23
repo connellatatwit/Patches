@@ -39,7 +39,7 @@ public class SpaceDebri : MonoBehaviour
     {
         if (collision.gameObject.layer == 11)
         {
-            collision.GetComponent<NonPlayerHealth>().TakeDamage(ts.Damage);
+            collision.GetComponent<NonPlayerHealth>().TakeDamage(ts);
             if(collision != null)
             {
                 if (!push)

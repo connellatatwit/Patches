@@ -19,9 +19,10 @@ public class Chest : MonoBehaviour, NonPlayerHealth
         this.player = player;
         this.reward = reward;
     }
-    public void TakeDamage(int amount)
+    public void TakeDamage(TowerStats ts)
     {
-        currentHealth -= amount;
+        // Implement Crit
+        currentHealth -= ts.Damage;
         if (currentHealth <= 0)
         {
             Debug.Log("OPEN");

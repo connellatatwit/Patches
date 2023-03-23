@@ -9,13 +9,11 @@ public class SoulBullet : MonoBehaviour, IBullet
 
     private float lifeTime = 10f;
 
-    private BulletStats bs;
+    private TowerStats ts;
 
-    public void InitBullet(Transform target, int dmg, float bulletSpeed)
+    public void InitBullet(Transform target, TowerStats ts)
     {
-        bs = GetComponent<BulletStats>();
-        bs.speed = bulletSpeed;
-        bs.dmg = dmg;
+        this.ts = ts;
     }
 
     private void Update()
@@ -24,7 +22,7 @@ public class SoulBullet : MonoBehaviour, IBullet
 
         if(currentTarget != null)
         {
-            transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, bs.speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, ts.BulletSpeed * Time.deltaTime);
         }
         else
         {
@@ -59,7 +57,7 @@ public class SoulBullet : MonoBehaviour, IBullet
     {
         if (collision.gameObject.layer == 11)
         {
-            collision.GetComponent<NonPlayerHealth>().TakeDamage(bs.dmg);
+            collision.GetComponent<NonPlayerHealth>().TakeDamage(ts);
             Destroy(gameObject);
         }
     }

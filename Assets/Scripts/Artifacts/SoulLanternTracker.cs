@@ -5,14 +5,12 @@ using UnityEngine;
 public class SoulLanternTracker : MonoBehaviour
 {
     [SerializeField] GameObject flameBulletPrefab;
-    private int dmg;
-    private float speed;
     private float lifeTime = 1f;
     private bool naturalDeath;
-    public void InitTracker(int dmg, float speed)
+    private TowerStats tS;
+    public void InitTracker(TowerStats ts)
     {
-        this.speed = speed;
-        this.dmg = dmg;
+        tS = ts;
     }
 
     private void Update()
@@ -30,7 +28,7 @@ public class SoulLanternTracker : MonoBehaviour
         {
             if (!this.gameObject.scene.isLoaded) return;
             GameObject bullet = Instantiate(flameBulletPrefab, transform.position, Quaternion.identity);
-            bullet.GetComponent<IBullet>().InitBullet(null, dmg, speed/2);
+            bullet.GetComponent<IBullet>().InitBullet(null, tS);
         }
     }
     void OnDisable()

@@ -8,21 +8,18 @@ public class Bullet : MonoBehaviour, IBullet
 
     private float deathTimer = .5f;
     [SerializeField] LayerMask enemyLayer = (1 << 11);
-    private BulletStats bs;
+    private TowerStats ts;
 
-    public void InitBullet(Transform target, int dmg, float bulletSpeed)
+    public void InitBullet(Transform target, TowerStats ts)
     {
         this.target = target;
-        bs.dmg = dmg;
-        bs.speed = bulletSpeed;
-        bs = GetComponent<BulletStats>();
-
+        this.ts = ts;
     }
     private void Update()
     {
         if(target != null)
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, bs.speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, ts.BulletSpeed * Time.deltaTime);
         }
         else
         {
@@ -38,7 +35,7 @@ public class Bullet : MonoBehaviour, IBullet
     {
         if(collision.gameObject.layer == 11)
         {
-            collision.GetComponent<NonPlayerHealth>().TakeDamage(bs.dmg);
+            collision.GetComponent<NonPlayerHealth>().TakeDamage(ts);
             Destroy(gameObject);
         }
     }

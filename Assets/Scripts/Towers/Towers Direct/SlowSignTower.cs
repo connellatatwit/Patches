@@ -145,7 +145,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 // Do damage
                 if (attackTimer <= 0)
                 {
-                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(tS.Damage);
+                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(tS);
                 }
             }
         }
@@ -168,7 +168,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 // Do damage
                 if (attackTimer <= 0)
                 {
-                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(tS.Damage);
+                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(tS);
                 }
             }
         }
@@ -191,7 +191,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 // Do damage
                 if (attackTimer <= 0)
                 {
-                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(tS.Damage);
+                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(tS);
                 }
                 if(stunTimer <= 0)
                 {
@@ -222,7 +222,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 // Do damage
                 if (attackTimer <= 0)
                 {
-                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(tS.Damage);
+                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(tS);
                 }
                 if (stunTimer <= 0)
                 {

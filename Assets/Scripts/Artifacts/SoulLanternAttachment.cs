@@ -25,7 +25,7 @@ public class SoulLanternAttachment : MonoBehaviour
                 for (int i = 0; i < enemies.Length; i++)
                 {
                     GameObject tracker = Instantiate(soulLanternTracker, enemies[i].transform.position, Quaternion.identity);
-                    tracker.GetComponent<SoulLanternTracker>().InitTracker(tS.Damage, tS.BulletSpeed);
+                    tracker.GetComponent<SoulLanternTracker>().InitTracker(tS);
                     tracker.transform.parent = enemies[i].transform;
                 }
             }
