@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] SpriteRenderer playerImage;
+    [SerializeField] Animator anime;
     private bool right = true;
 
     // Update is called once per frame
@@ -33,5 +34,8 @@ public class PlayerMove : MonoBehaviour
                 playerImage.flipX = false;
             }
         }
+        float b = x + y;
+        anime.SetInteger("MovingX", Mathf.CeilToInt(x));
+        anime.SetInteger("MovingY", Mathf.CeilToInt(y));
     }
 }
