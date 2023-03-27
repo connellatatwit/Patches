@@ -19,6 +19,13 @@ public class TowerStats : MonoBehaviour
     private float currentCritChance;
     [SerializeField] float baseCritDamage = 1.2f;
     private float currentCritDamage;
+    [Header("Special Stats")]
+    [SerializeField] float baseSlowAmount;
+    private float currentSlowAmount;
+    [SerializeField] float baseSlowLength;
+    private float currentSlowLength;
+    [SerializeField] float baseStunLength;
+    private float currentStunLength;
 
     private float startTime; // Time the tower came to existance: Used to decide which tower to kill if they are the same
 
@@ -32,6 +39,10 @@ public class TowerStats : MonoBehaviour
         currentMaxUpgrades = baseMaxUpgrades;
         currentCritChance = baseCritChance;
         currentCritDamage = baseCritDamage;
+
+        currentSlowLength = baseSlowLength;
+        currentSlowAmount = baseSlowAmount;
+        currentStunLength = baseStunLength;
 
         artifacts = new List<IArtifact>();
 
@@ -69,6 +80,18 @@ public class TowerStats : MonoBehaviour
     {
         get { return artifacts; }
     }
+    public float SlowAmount
+    {
+        get { return currentSlowAmount; }
+    }
+    public float SlowLength
+    {
+        get { return currentSlowLength; }
+    }
+    public float StunLength
+    {
+        get { return currentStunLength; }
+    }
 
     public void IncreaseDamage(int amount)
     {
@@ -104,6 +127,18 @@ public class TowerStats : MonoBehaviour
     public void IncreaseMaxUpgrade(int amount)
     {
         currentMaxUpgrades += amount;
+    }
+    public void IncreaseSlowAmount(float amount)
+    {
+        currentSlowAmount = currentSlowAmount + amount;
+    }
+    public void IncreaseSlowTime(float length)
+    {
+        currentSlowLength += length;
+    }
+    public void IncreaseStunLength(float length)
+    {
+        currentStunLength += length;
     }
     public bool CheckUpGrade()
     {

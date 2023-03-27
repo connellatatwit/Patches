@@ -51,7 +51,8 @@ public class EnemyFollowPlayer : MonoBehaviour
 
     private void TowardsPlayer()
     {
-        dir += player.position - transform.position;
+        if(player != null)
+            dir += player.position - transform.position;
     }
 
     public void Push(Vector2 pushDir, float length)

@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expPrefab: {fileID: 4093619000550668581, guid: 4d18716ef384d3147adc93960f297ed8, type: 3}
+  eS: {fileID: 4497288077224993001}
 --- !u!114 &4497288077224993001
 MonoBehaviour:
   m_ObjectHideFlags: 0

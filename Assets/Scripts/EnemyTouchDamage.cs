@@ -48,9 +48,12 @@ public class EnemyTouchDamage : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject == player.gameObject)
+        if (player != null)
         {
-            touching = false;
-        }
+            if (collision.gameObject == player.gameObject)
+            {
+                touching = false;
+            }
+        }   
     }
 }

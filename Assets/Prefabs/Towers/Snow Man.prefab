@@ -164,10 +164,13 @@ MonoBehaviour:
   baseRange: 6
   baseDmg: 10
   baseAttackCd: 1
-  bulletSpeed: 5
+  bulletSpeed: 8
   baseMaxUpgrades: 3
   baseCritChance: 5
   baseCritDamage: 1.2
+  baseSlowAmount: 0.3
+  baseSlowLength: 1
+  baseStunLength: 0
 --- !u!50 &6451325165700359666
 Rigidbody2D:
   serializedVersion: 4
@@ -325,6 +328,8 @@ MonoBehaviour:
   - {fileID: -1408947446, guid: a9713c9beb390a14ab61b3c421f220d7, type: 3}
   - {fileID: 1187085341, guid: a9713c9beb390a14ab61b3c421f220d7, type: 3}
   - {fileID: 1187085341, guid: a9713c9beb390a14ab61b3c421f220d7, type: 3}
+  slowIncrease2: 0.1
+  bulletSpeedIncrease2: 3
   icicleDmgIncrease: 0
 --- !u!1 &6151859078497835091
 GameObject:

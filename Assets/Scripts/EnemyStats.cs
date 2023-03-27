@@ -20,6 +20,8 @@ public class EnemyStats : MonoBehaviour
     private int currentDmg;
 
     private bool stunned = false;
+    private bool slowed = false;
+    private float slowAmount = 0f;
 
     private void Start()
     {
@@ -39,7 +41,15 @@ public class EnemyStats : MonoBehaviour
     {
         if (!stunned)
         {
-            float temp = currentSpeed * currentSpeedReduction;
+            float temp;
+            if (slowed)
+            {
+                temp = currentSpeed * slowAmount;
+            }
+            else
+            {
+                temp = currentSpeed * currentSpeedReduction;
+            }
             currentSpeedReduction = 1;
             return temp;
         }
@@ -76,9 +86,21 @@ public class EnemyStats : MonoBehaviour
         stunned = true;
         StartCoroutine(WaitForStun(length));
     }
+    public void Slow(float length, float amount)
+    {
+        slowAmount = 1 - amount;
+        slowed = true;
+        StartCoroutine(WaitForSlow(length));
+    }
     private IEnumerator WaitForStun(float length)
     {
         yield return new WaitForSeconds(length);
         stunned = false;
+    }
+    private IEnumerator WaitForSlow(float length)
+    {
+        yield return new WaitForSeconds(length);
+        slowed = false;
+        slowAmount = 0;
     }
 }

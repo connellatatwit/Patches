@@ -25,6 +25,8 @@ public class Snowman : MonoBehaviour, ITower, IItem
     /*[Header("Animation")]
     [SerializeField] Animator animator;*/
     [Header("Level 2")]
+    [SerializeField] float slowIncrease2;
+    [SerializeField] float bulletSpeedIncrease2;
     [Header("Level 3")]
     [SerializeField] float icicleDmgIncrease;
     [Header("Level 4")]
@@ -62,11 +64,12 @@ public class Snowman : MonoBehaviour, ITower, IItem
         if (currentLevel == 2)
         {
             sr.sprite = levelImages[currentLevel - 1];
+            tS.IncreaseSlowAmount(slowIncrease2);
+            tS.IncreaseBulletSpeed(bulletSpeedIncrease2);
         }
         if (currentLevel == 3)
         {
             sr.sprite = levelImages[currentLevel - 1];
-
         }
         if (currentLevel == 4)
         {
