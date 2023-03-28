@@ -319,7 +319,7 @@ MonoBehaviour:
   itemDescription: Good at singing
   itemSprite: {fileID: 440586537, guid: a9713c9beb390a14ab61b3c421f220d7, type: 3}
   snowBallPrefab: {fileID: 8183015389582316408, guid: a10e341dd511061489b84486a0bc139d, type: 3}
-  iceciclePrefab: {fileID: 8183015389582316408, guid: a10e341dd511061489b84486a0bc139d, type: 3}
+  iceciclePrefab: {fileID: 8514964787591182580, guid: 39a01308084b91641b445f5b8f3f5682, type: 3}
   shootPos: {fileID: 8849280619702312932}
   sr: {fileID: 4890321262676491653}
   levelImages:

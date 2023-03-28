@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface NonPlayerHealth
 {
-    public void TakeDamage(TowerStats amount);
+    public void TakeDamage(BulletStats bs);
 }

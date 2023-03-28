@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IBullet
 {
-    public void InitBullet(Transform target, TowerStats ts);
+    public void InitBullet(Transform target, int dmg, float speed, float slowAmount, float slowLength, float stunLength);
 }

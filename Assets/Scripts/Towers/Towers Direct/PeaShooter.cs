@@ -251,7 +251,7 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
         {
             bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
         }
-        bullet.GetComponent<IBullet>().InitBullet(currentTargets[index].transform, tS);
+        bullet.GetComponent<IBullet>().InitBullet(currentTargets[index].transform, tS.Damage, tS.BulletSpeed, tS.SlowAmount, tS.SlowLength, tS.StunLength);
     }
     void FindTarget(int index)
     {

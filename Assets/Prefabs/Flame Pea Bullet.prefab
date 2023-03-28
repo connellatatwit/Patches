@@ -117,7 +117,6 @@ GameObject:
   - component: {fileID: 1993346474949688836}
   - component: {fileID: 8954842158603171302}
   - component: {fileID: -8011680888689932034}
-  - component: {fileID: -3414693211807482456}
   m_Layer: 0
   m_Name: Flame Pea Bullet
   m_TagString: Untagged
@@ -193,17 +192,3 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 2048
---- !u!114 &-3414693211807482456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2351154793707236423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b39b9373705eb842bccd21084a504e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmg: 0
-  speed: 0

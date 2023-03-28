@@ -16,6 +16,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
     [SerializeField] SpriteRenderer sr;
     [SerializeField] List<Sprite> levelImages;
     [Header("Level 1")]
+    private BulletStats bs;
     [Header("Level 2")]
     [SerializeField] float slowIncrease2;
     [SerializeField] int dmg2;
@@ -73,6 +74,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
     {
         if (currentLevel == 2)
         {
+            bs = new BulletStats(tS.Damage, tS.BulletSpeed, tS.SlowAmount, tS.SlowLength, tS.StunLength);
             tS.SetAttackSpeed(atkCD2);
             tS.IncreaseBulletSpeed(slowIncrease2);
             sr.sprite = levelImages[currentLevel - 1];
@@ -145,7 +147,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 // Do damage
                 if (attackTimer <= 0)
                 {
-                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(tS);
+                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(bs);
                 }
             }
         }
@@ -168,7 +170,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 // Do damage
                 if (attackTimer <= 0)
                 {
-                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(tS);
+                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(bs);
                 }
             }
         }
@@ -191,7 +193,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 // Do damage
                 if (attackTimer <= 0)
                 {
-                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(tS);
+                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(bs);
                 }
                 if(stunTimer <= 0)
                 {
@@ -222,7 +224,7 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 // Do damage
                 if (attackTimer <= 0)
                 {
-                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(tS);
+                    enemy.GetComponent<NonPlayerHealth>().TakeDamage(bs);
                 }
                 if (stunTimer <= 0)
                 {

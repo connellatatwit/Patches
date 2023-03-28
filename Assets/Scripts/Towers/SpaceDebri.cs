@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpaceDebri : MonoBehaviour
 {
     private Transform pivot;
-    private TowerStats ts;
+    private BulletStats bs;
     private Vector2 localStart;
     private float timer;
 
@@ -16,7 +16,7 @@ public class SpaceDebri : MonoBehaviour
     public void Init(Transform pivot, TowerStats ts, bool push)
     {
         timer = .1f;
-        this.ts = ts;
+        bs = new BulletStats(ts.Damage, ts.BulletSpeed, ts.SlowAmount, ts.SlowLength, ts.StunLength);
         this.pivot = pivot;
         localStart = transform.localPosition;
         transform.localScale = new Vector3(ts.Range / 2, ts.Range / 2, 1);
@@ -26,7 +26,7 @@ public class SpaceDebri : MonoBehaviour
     {
         if (pivot != null)
         {
-            transform.RotateAround(pivot.position, new Vector3(0, 0, 1), ts.BulletSpeed * 100f * Time.deltaTime);
+            transform.RotateAround(pivot.position, new Vector3(0, 0, 1), bs.speed * 100f * Time.deltaTime);
             if(Vector2.Distance(transform.localPosition, localStart) <= .1 && timer <= 0)
             {
                 Destroy(gameObject);
@@ -39,14 +39,14 @@ public class SpaceDebri : MonoBehaviour
     {
         if (collision.gameObject.layer == 11)
         {
-            collision.GetComponent<NonPlayerHealth>().TakeDamage(ts);
+            collision.GetComponent<NonPlayerHealth>().TakeDamage(bs);
             if(collision != null)
             {
                 if (!push)
                     pushDistance = Vector2.zero;
                 else if (collision.GetComponent<EnemyFollowPlayer>() != null)
                 {
-                    pushDistance = (collision.transform.position - pivot.position).normalized * (ts.Damage/2);
+                    pushDistance = (collision.transform.position - pivot.position).normalized * (bs.dmg/2);
                     collision.GetComponent<EnemyFollowPlayer>().Push(pushDistance, .2f);
                 }
             }

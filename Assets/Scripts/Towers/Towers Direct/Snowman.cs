@@ -117,7 +117,7 @@ public class Snowman : MonoBehaviour, ITower, IItem
             {
                 // Shoot
                 attackTimer = tS.AttackCd;
-                Shoot();
+                Shoot2();
             }
         }
         else
@@ -187,12 +187,14 @@ public class Snowman : MonoBehaviour, ITower, IItem
                 }
             }
         }
+        else
+            currentTarget = null;
     }
     void Shoot()
     {
         GameObject bullet;
         bullet = Instantiate(snowBallPrefab, shootPos.position, Quaternion.identity);
-        bullet.GetComponent<IBullet>().InitBullet(currentTarget.transform, tS);
+        bullet.GetComponent<IBullet>().InitBullet(currentTarget.transform, tS.Damage, tS.BulletSpeed, tS.SlowAmount, tS.SlowLength, tS.StunLength);
     }
     void Shoot2()
     {
@@ -202,16 +204,27 @@ public class Snowman : MonoBehaviour, ITower, IItem
         {
             // NEEDS TO ADD DMG
             bullet = Instantiate(iceciclePrefab, shootPos.position, Quaternion.identity);
-            bullet.GetComponent<IBullet>().InitBullet(currentTarget.transform, tS);
+            bullet.GetComponent<IBullet>().InitBullet(currentTarget.transform, Mathf.RoundToInt(tS.Damage*1.5f), tS.BulletSpeed * 1.5f, 0, 0, tS.StunLength+1);
         }
         else
         {
             bullet = Instantiate(snowBallPrefab, shootPos.position, Quaternion.identity);
-            bullet.GetComponent<IBullet>().InitBullet(currentTarget.transform, tS);
+            bullet.GetComponent<IBullet>().InitBullet(currentTarget.transform, tS.Damage, tS.BulletSpeed, tS.SlowAmount, tS.SlowLength, tS.StunLength);
         }
 
     }
 
+    public void SnowStorm()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, tS.Range, enemyLayer);
+        if (enemies.Length != 0)
+        {
+            foreach (Collider2D enemy in enemies)
+            {
+                enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, 1 - ((tS.BulletSpeed * 6.6f) / 100));
+            }
+        }
+    }
     public void BeingHeld(bool held)
     {
         beingHeld = held;
