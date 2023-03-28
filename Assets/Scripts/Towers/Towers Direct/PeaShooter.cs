@@ -290,14 +290,4 @@ public class PeaShooter : MonoBehaviour, ITower, IItem
     {
         beingHeld = held;
     }
-
-/*    public void AddArtifact(IArtifact artifact)
-    {
-        artifacts.Add(artifact);
-    }
-
-    public List<IArtifact> GetArtifact()
-    {
-        return artifacts;
-    }*/
 }

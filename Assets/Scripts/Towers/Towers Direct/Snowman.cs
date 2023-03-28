@@ -17,6 +17,8 @@ public class Snowman : MonoBehaviour, ITower, IItem
     [SerializeField] Transform shootPos;
 
     private float attackTimer = 1f;
+    private float snowStormTimer = 1f;
+    private float snowStormCd = .75f;
     private GameObject currentTarget;
 
     [Header("Sprites")]
@@ -30,6 +32,8 @@ public class Snowman : MonoBehaviour, ITower, IItem
     [Header("Level 3")]
     [SerializeField] float icicleDmgIncrease;
     [Header("Level 4")]
+    [SerializeField] GameObject snowStormPrefab;
+    [SerializeField] Transform snowStormPos;
     [Header("Level 5")]
 
     private TowerStats tS;
@@ -74,7 +78,8 @@ public class Snowman : MonoBehaviour, ITower, IItem
         if (currentLevel == 4)
         {
             sr.sprite = levelImages[currentLevel - 1];
-
+            GameObject snorStorm = Instantiate(snowStormPrefab, snowStormPos);
+            snorStorm.transform.position = snowStormPos.position;
         }
         if (currentLevel == 5)
         {
@@ -87,7 +92,7 @@ public class Snowman : MonoBehaviour, ITower, IItem
     {
         if (currentLevel == 1)
         {
-            Level1Effect();
+            Level3Effect();
         }
         else if (currentLevel == 2)
         {
@@ -117,7 +122,7 @@ public class Snowman : MonoBehaviour, ITower, IItem
             {
                 // Shoot
                 attackTimer = tS.AttackCd;
-                Shoot2();
+                Shoot();
             }
         }
         else
@@ -147,6 +152,7 @@ public class Snowman : MonoBehaviour, ITower, IItem
     private void Level3Effect()
     {
         attackTimer -= Time.deltaTime;
+        snowStormTimer -= Time.deltaTime;
 
         if (currentTarget != null)
         {
@@ -160,6 +166,11 @@ public class Snowman : MonoBehaviour, ITower, IItem
         else
         {
             FindTarget();
+        }
+        if(snowStormTimer <= 0)
+        {
+            SnowStorm();
+            snowStormTimer = snowStormCd;
         }
     }
     private void Level4Effect()
@@ -221,7 +232,8 @@ public class Snowman : MonoBehaviour, ITower, IItem
         {
             foreach (Collider2D enemy in enemies)
             {
-                enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, 1 - ((tS.BulletSpeed * 6.6f) / 100));
+                enemy.GetComponent<EnemyStats>().WeakenStat(EnemyStat.MoveSpeed, 1 - tS.SlowAmount / 2);
+                enemy.GetComponent<NonPlayerHealth>().TakeDamage(new BulletStats(tS.Damage/2, 0, 0, 0, 0));
             }
         }
     }
