@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Ave Goggles
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 21300000, guid: 3f4c700069cf7f3489dc76effedb3f5f, type: 3}
   targetStat: 1
   increase1: 1
   increase2: 1

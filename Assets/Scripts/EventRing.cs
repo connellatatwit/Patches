@@ -21,7 +21,6 @@ public class EventRing : MonoBehaviour
     [SerializeField] float lifeTimer;
     [SerializeField] float baseTimer;
     private float currentTimer;
-    private bool beingUsed;
 
     private bool finished = false;
     private bool succeeded;
@@ -30,7 +29,7 @@ public class EventRing : MonoBehaviour
 
     private ParticleSystem ps;
 
-    private bool bugFix = false;
+    private int amountInside = 0;
     public bool Finished
     {
         get { return finished; }
@@ -69,8 +68,6 @@ public class EventRing : MonoBehaviour
         lifeTimer = baseTimer * 2f;
         currentTimer = baseTimer;
         ps = GetComponent<ParticleSystem>();
-
-        bugFix = true;
     }
 
     private void Update()
@@ -79,7 +76,7 @@ public class EventRing : MonoBehaviour
         {
             if (isTimer)
             {
-                if (beingUsed)
+                if (amountInside > 0)
                 {
                     currentTimer -= Time.deltaTime;
                     var str = ps.noise;
@@ -113,26 +110,20 @@ public class EventRing : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (bugFix)
+        if (LayerMask.LayerToName(collision.gameObject.layer) == targetLayer)
         {
-            if (LayerMask.LayerToName(collision.gameObject.layer) == targetLayer)
-            {
-                beingUsed = true;
-                var ma = ps.main;
-                ma.startColor = grad;
-            }
+            amountInside++;
+            var ma = ps.main;
+            ma.startColor = grad;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (bugFix)
+        if (LayerMask.LayerToName(collision.gameObject.layer) == targetLayer)
         {
-            if (LayerMask.LayerToName(collision.gameObject.layer) == targetLayer)
-            {
-                beingUsed = false;
-                var ma = ps.main;
-                ma.startColor = oriGrad;
-            }
+            amountInside--;
+            var ma = ps.main;
+            ma.startColor = oriGrad;
         }
     }
 }

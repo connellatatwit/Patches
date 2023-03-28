@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
     private int currentHealth;
 
     [SerializeField] Image hpBar;
+    [SerializeField] GameObject loseScreen;
+    [SerializeField] Timer clock;
 
     private void Start()
     {
@@ -25,7 +27,9 @@ public class PlayerHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             Debug.Log("Died");
-            Destroy(gameObject);
+            loseScreen.SetActive(true);
+            clock.FInish();
+            //Destroy(gameObject);
         }
 
         hpBar.fillAmount = (float)currentHealth / (float)maxHealth;

@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI timerText;
     private float startTime;
+    bool done = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,10 +17,20 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float t = Time.time - startTime;
-        string min = ((int)t / 60).ToString();
-        string sec = ((int)t % 60).ToString();
+        if (!done)
+        {
+            float t = Time.time - startTime;
+            string min = ((int)t / 60).ToString();
+            string sec = ((int)t % 60).ToString();
 
-        timerText.text = ("[" + min + ":" + sec + "]");
+            timerText.text = ("[" + min + ":" + sec + "]");
+        }
+    }
+
+    public void FInish()
+    {
+        done = true;
+
+        timerText.color = Color.yellow;
     }
 }

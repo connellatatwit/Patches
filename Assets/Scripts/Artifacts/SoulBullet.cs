@@ -22,7 +22,7 @@ public class SoulBullet : MonoBehaviour, IBullet
 
         if(currentTarget != null)
         {
-            transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, bs.speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, bs.speed/4 * Time.deltaTime);
         }
         else
         {

@@ -132,9 +132,12 @@ public class Snowman : MonoBehaviour, ITower, IItem
         {
             if (attackTimer <= 0)
             {
-                // Shoot
-                attackTimer = tS.AttackCd;
-                Shoot();
+                if (CheckTarget())
+                {
+                    // Shoot
+                    attackTimer = tS.AttackCd;
+                    Shoot();
+                }
             }
         }
         else
@@ -150,9 +153,12 @@ public class Snowman : MonoBehaviour, ITower, IItem
         {
             if (attackTimer <= 0)
             {
-                // Shoot
-                attackTimer = tS.AttackCd;
-                Shoot2();
+                if (CheckTarget())
+                {
+                    // Shoot
+                    attackTimer = tS.AttackCd;
+                    Shoot2();
+                }
             }
         }
         else
@@ -169,9 +175,12 @@ public class Snowman : MonoBehaviour, ITower, IItem
         {
             if (attackTimer <= 0)
             {
-                // Shoot
-                attackTimer = tS.AttackCd;
-                Shoot2();
+                if (CheckTarget())
+                {
+                    // Shoot
+                    attackTimer = tS.AttackCd;
+                    Shoot2();
+                }
             }
         }
         else
@@ -188,9 +197,12 @@ public class Snowman : MonoBehaviour, ITower, IItem
         {
             if (attackTimer <= 0)
             {
-                // Shoot
-                attackTimer = tS.AttackCd;
-                Shoot2();
+                if (CheckTarget())
+                {
+                    // Shoot
+                    attackTimer = tS.AttackCd;
+                    Shoot2();
+                }
             }
         }
         else
@@ -205,7 +217,30 @@ public class Snowman : MonoBehaviour, ITower, IItem
     }
     private void Level5Effect()
     {
+        attackTimer -= Time.deltaTime;
+        snowStormTimer -= Time.deltaTime;
 
+        if (currentTarget != null)
+        {
+            if (attackTimer <= 0)
+            {
+                if (CheckTarget())
+                {
+                    // Shoot
+                    attackTimer = tS.AttackCd;
+                    Shoot2();
+                }
+            }
+        }
+        else
+        {
+            FindTarget();
+        }
+        if (snowStormTimer <= 0)
+        {
+            SnowStorm();
+            snowStormTimer = snowStormCd;
+        }
     }
 
     void FindTarget()
@@ -250,7 +285,15 @@ public class Snowman : MonoBehaviour, ITower, IItem
         }
 
     }
-
+    bool CheckTarget()
+    {
+        if (Vector2.Distance(transform.position, currentTarget.transform.position) > tS.Range)
+        {
+            currentTarget = null;
+            return false;
+        }
+        return true;
+    }
     public void SnowStorm()
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, tS.Range, enemyLayer);
