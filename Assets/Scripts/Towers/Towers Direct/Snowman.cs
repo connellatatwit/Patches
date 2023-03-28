@@ -29,12 +29,19 @@ public class Snowman : MonoBehaviour, ITower, IItem
     [Header("Level 2")]
     [SerializeField] float slowIncrease2;
     [SerializeField] float bulletSpeedIncrease2;
-    [Header("Level 3")]
     [SerializeField] float icicleDmgIncrease;
+    [SerializeField] int icicleChance2;
+    private int icicicleChance;
+    [Header("Level 3")]
+    [SerializeField] int icicicleChance3;
+    [SerializeField] int dmgIncreace3;
     [Header("Level 4")]
     [SerializeField] GameObject snowStormPrefab;
     [SerializeField] Transform snowStormPos;
     [Header("Level 5")]
+    [SerializeField] float bulletSpeedIncrease5;
+    [SerializeField] int dmgIncrease5;
+    [SerializeField] float slowAmounntIncrease5;
 
     private TowerStats tS;
 
@@ -70,10 +77,13 @@ public class Snowman : MonoBehaviour, ITower, IItem
             sr.sprite = levelImages[currentLevel - 1];
             tS.IncreaseSlowAmount(slowIncrease2);
             tS.IncreaseBulletSpeed(bulletSpeedIncrease2);
+            icicicleChance = icicleChance2;
         }
         if (currentLevel == 3)
         {
             sr.sprite = levelImages[currentLevel - 1];
+            icicicleChance = icicicleChance3;
+            tS.IncreaseDamage(dmgIncreace3);
         }
         if (currentLevel == 4)
         {
@@ -84,7 +94,9 @@ public class Snowman : MonoBehaviour, ITower, IItem
         if (currentLevel == 5)
         {
             sr.sprite = levelImages[currentLevel - 1];
-
+            tS.IncreaseSlowAmount(slowAmounntIncrease5);
+            tS.IncreaseBulletSpeed(bulletSpeedIncrease5);
+            tS.IncreaseDamage(dmgIncrease5);
         }
     }
 
@@ -92,7 +104,7 @@ public class Snowman : MonoBehaviour, ITower, IItem
     {
         if (currentLevel == 1)
         {
-            Level3Effect();
+            Level1Effect();
         }
         else if (currentLevel == 2)
         {
@@ -140,7 +152,7 @@ public class Snowman : MonoBehaviour, ITower, IItem
             {
                 // Shoot
                 attackTimer = tS.AttackCd;
-                Shoot();
+                Shoot2();
             }
         }
         else
@@ -150,6 +162,24 @@ public class Snowman : MonoBehaviour, ITower, IItem
     }
 
     private void Level3Effect()
+    {
+        attackTimer -= Time.deltaTime;
+
+        if (currentTarget != null)
+        {
+            if (attackTimer <= 0)
+            {
+                // Shoot
+                attackTimer = tS.AttackCd;
+                Shoot2();
+            }
+        }
+        else
+        {
+            FindTarget();
+        }
+    }
+    private void Level4Effect()
     {
         attackTimer -= Time.deltaTime;
         snowStormTimer -= Time.deltaTime;
@@ -167,15 +197,11 @@ public class Snowman : MonoBehaviour, ITower, IItem
         {
             FindTarget();
         }
-        if(snowStormTimer <= 0)
+        if (snowStormTimer <= 0)
         {
             SnowStorm();
             snowStormTimer = snowStormCd;
         }
-    }
-    private void Level4Effect()
-    {
-
     }
     private void Level5Effect()
     {
@@ -209,13 +235,13 @@ public class Snowman : MonoBehaviour, ITower, IItem
     }
     void Shoot2()
     {
-        int chance = Random.Range(0, 2);
+        int chance = Random.Range(0, icicicleChance);
         GameObject bullet;
         if (chance == 0)
         {
             // NEEDS TO ADD DMG
             bullet = Instantiate(iceciclePrefab, shootPos.position, Quaternion.identity);
-            bullet.GetComponent<IBullet>().InitBullet(currentTarget.transform, Mathf.RoundToInt(tS.Damage*1.5f), tS.BulletSpeed * 1.5f, 0, 0, tS.StunLength+1);
+            bullet.GetComponent<IBullet>().InitBullet(currentTarget.transform, Mathf.RoundToInt(tS.Damage*icicleDmgIncrease), tS.BulletSpeed * 1.5f, 0, 0, tS.StunLength+1);
         }
         else
         {

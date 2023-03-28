@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour, NonPlayerHealth
         eS.TakeDamage(bs.dmg);
         if(eS.Health <= 0)
         {
-            Die();
+            DropExp();
         }
         else
         {
@@ -24,7 +24,7 @@ public class EnemyHealth : MonoBehaviour, NonPlayerHealth
         }
     }
 
-    private void Die()
+    private void DropExp()
     {
         Instantiate(expPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);

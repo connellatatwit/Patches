@@ -17,6 +17,7 @@ public class EnemyFollowPlayer : MonoBehaviour
     private Vector3 pushDir;
 
     private bool noControl = false;
+    private bool spriteFlipped = false;
 
     private void Start()
     {
@@ -38,13 +39,21 @@ public class EnemyFollowPlayer : MonoBehaviour
             rb.velocity = dir.normalized * eS.Speed() * Time.deltaTime;
             dir = Vector3.zero;
 
-            if (rb.velocity.x > 0)
+            if (!spriteFlipped)
             {
-                sr.flipX = true;
+                if (rb.velocity.x > 0)
+                {
+                    sr.flipX = !sr.flipX;
+                    spriteFlipped = true;
+                }
             }
             else
             {
-                sr.flipX = false;
+                if(rb.velocity.x < 0)
+                {
+                    sr.flipX = !sr.flipX;
+                    spriteFlipped = false;
+                }
             }
         }
     }

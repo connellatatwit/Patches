@@ -362,9 +362,15 @@ MonoBehaviour:
   - {fileID: 1187085341, guid: a9713c9beb390a14ab61b3c421f220d7, type: 3}
   slowIncrease2: 0.1
   bulletSpeedIncrease2: 3
-  icicleDmgIncrease: 0
+  icicleDmgIncrease: 1.5
+  icicleChance2: 5
+  icicicleChance3: 3
+  dmgIncreace3: 5
   snowStormPrefab: {fileID: 6658031193153482065, guid: d12fd11c63b90cc44b1e2257f8ef4e6a, type: 3}
   snowStormPos: {fileID: 5578561754333708212}
+  bulletSpeedIncrease5: 5
+  dmgIncrease5: 10
+  slowAmounntIncrease5: 0.1
 --- !u!1 &6151859078497835091
 GameObject:
   m_ObjectHideFlags: 0

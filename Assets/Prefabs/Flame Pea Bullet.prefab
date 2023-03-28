@@ -192,4 +192,4 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 2048
-  sprite: {fileID: 2351154792007196156}
+  sprite: {fileID: 0}

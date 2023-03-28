@@ -37,7 +37,7 @@ public class Chest : MonoBehaviour, NonPlayerHealth
         GameObject item = Instantiate(reward, transform.position, Quaternion.identity);
         StartCoroutine(DieChest(item));
 
-        player.GetComponent<PlayerPointer>().SetTarget(item.transform);
+        player.GetComponent<PlayerPointer>().RemoveTarget();
     }
 
     private IEnumerator DieChest(GameObject item)

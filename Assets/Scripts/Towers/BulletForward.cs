@@ -24,7 +24,8 @@ public class BulletForward : MonoBehaviour, IBullet
         targetDir.Normalize();
         //Debug.Log("Target Dir " + targetDir);
         rb.velocity = targetDir * bs.speed;
-        sprite.eulerAngles = new Vector3(0,0,BulletAngle(targetDir));
+        if(sprite != null)
+            sprite.eulerAngles = new Vector3(0,0,BulletAngle(targetDir));
     }
     private float BulletAngle(Vector3 dir)
     {

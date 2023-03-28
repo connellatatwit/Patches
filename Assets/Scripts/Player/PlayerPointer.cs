@@ -13,6 +13,11 @@ public class PlayerPointer : MonoBehaviour
         this.target = target;
         pointer.gameObject.SetActive(true);
     }
+    public void RemoveTarget()
+    {
+        pointer.gameObject.SetActive(false);
+        target = null;
+    }
     private void Update()
     {
         if(target != null)
