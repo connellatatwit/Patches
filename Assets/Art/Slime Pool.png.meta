@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cbc797b6e5880bf4e8c7c73a5fcca083
+guid: a1591456e00b9e149ae0892f3f0b1b5d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,43 +117,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Big Ooze (1)_0
+      name: Slime Pool_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db078038df574914499fc6f95e2bad84
+      internalID: -1460163867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime Pool_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea299a2823225ae438358d2753055735
+      internalID: 833732766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime Pool_2
       rect:
         serializedVersion: 2
         x: 0
         y: 64
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4faf72d95600b24f9d8e4ad912af486
-      internalID: 1784377364
+      spriteID: 634d24f1dddc1734382363ba35af0b7c
+      internalID: -39866009
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Ooze (1)_1
+      name: Slime Pool_3
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bca8cbd5cca5e3a418b60cb88ef70db2
+      internalID: 1071988742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slime Pool_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.25}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab6138a6d563a5940a805b525ef95543
-      internalID: -1398333438
+      spriteID: 76d64a057a00aa5489496e3a03eb0088
+      internalID: -147698860
       vertices: []
       indices: 
       edges: []
@@ -169,8 +232,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Big Ooze (1)_1: -1398333438
-      Big Ooze (1)_0: 1784377364
+      Slime Pool_4: -147698860
+      Slime Pool_2: -39866009
+      Slime Pool_0: -1460163867
+      Slime Pool_1: 833732766
+      Slime Pool_3: 1071988742
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
