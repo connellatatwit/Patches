@@ -7,6 +7,7 @@ public class SlimeBomb : MonoBehaviour
     [SerializeField] Vector2 startPos;
     [SerializeField] Vector2 targetPos;
 
+    [SerializeField] GameObject poolPrefab;
     [SerializeField] float speed;
 
     private float dist;
@@ -18,30 +19,40 @@ public class SlimeBomb : MonoBehaviour
     {
         this.startPos = startPos;
         this.targetPos = targetPos;
-        Debug.Log(transform.position + " Transform");
-        Debug.Log(startPos + "StartPos");
+        int randx = Random.Range(-5, 5);
+        int randY = Random.Range(-5, 5);
+        this.targetPos.x += randx;
+        this.targetPos.y += randY;
     }
     private void Update()
     {
+        // BUG: It will travel really fast if you are directly above/below him
         dist = targetPos.x - startPos.x;
 
         nextX = Mathf.MoveTowards(transform.position.x, targetPos.x, speed * Time.deltaTime);
         baseY = Mathf.Lerp(startPos.y, targetPos.y, (nextX - startPos.x) / dist);
-        height = 2 * (nextX - targetPos.x) * (nextX - targetPos.x) / (-.25f * dist * dist);
+        height = 4 * (nextX - startPos.x) * (nextX - targetPos.x) / (-.25f * dist * dist);
 
         Vector3 movePosition = new Vector3(nextX, baseY + height, transform.position.z);
         transform.rotation = LookAtTarget(movePosition - transform.position);
         transform.position = movePosition;
         
-        if(transform.position.x == targetPos.x && transform.position.y == targetPos.y)
+        if(Vector2.Distance(transform.position, targetPos) <= .1f)
         {
-            Destroy(gameObject);
+            Die();
         }
-        Debug.Log("MOVED TO " + transform.position);
+        
     }
 
     public Quaternion LookAtTarget(Vector3 rot)
     {
         return Quaternion.Euler(0, 0, Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg);
+    }
+
+    private void Die()
+    {
+        Instantiate(poolPrefab, transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
     }
 }

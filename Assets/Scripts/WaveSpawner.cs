@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
-
+    [SerializeField] List<Enemy> bosses; 
     public List<Enemy> enemies = new List<Enemy>();
+    [SerializeField] List<int> bossWaves;
     public int currWave;
     private int waveValue;
     [SerializeField] int valuePerWave;
@@ -68,8 +69,15 @@ public class WaveSpawner : MonoBehaviour
         if (waveTimer <= 0 && spawnedEnemies.Count <= 0)
         {
             currWave++;
-            CheckEvent();
-            GenerateWave();
+            if (!bossWaves.Contains(currWave))
+            {
+                CheckEvent();
+                GenerateWave();
+            }
+            else
+            {
+                GenerateBossWave();
+            }
         }
     }
     private Vector3 RandomPointOnCircleEdge(float radius)
@@ -93,6 +101,17 @@ public class WaveSpawner : MonoBehaviour
         waveTimer = waveDuration; // wave duration is read only
     }
 
+    public void GenerateBossWave()
+    {
+        GenerateBoss();
+        waveTimer = waveDuration; // wave duration is read only
+    }
+
+    private void GenerateBoss()
+    {
+        enemiesToSpawn.Clear();
+        enemiesToSpawn.Add(bosses[0].enemyPrefab);
+    }
     public void GenerateEnemies()
     {
         // Create a temporary list of enemies to generate

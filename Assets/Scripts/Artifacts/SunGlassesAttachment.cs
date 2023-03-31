@@ -6,7 +6,7 @@ public class SunGlassesAttachment : MonoBehaviour
 {
     [SerializeField] GameObject sunglassesTracker;
 
-    [SerializeField] int dmgIncrease;
+    [SerializeField] float dmgIncrease;
     [SerializeField] float speed;
     [SerializeField] Transform pivotObject;
     private Vector3 offSet;
@@ -49,9 +49,10 @@ public class SunGlassesAttachment : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.name);
         if(collision.GetComponent<IBullet>() != null)
         {
-            collision.GetComponent<BulletStats>().dmg += dmgIncrease;
+            collision.GetComponent<IBullet>().BS.dmg += Mathf.RoundToInt(collision.GetComponent<IBullet>().BS.dmg * dmgIncrease);
             GameObject sunglasses = Instantiate(sunglassesTracker, collision.transform.position, Quaternion.identity);
             sunglasses.transform.parent = collision.transform;
         }

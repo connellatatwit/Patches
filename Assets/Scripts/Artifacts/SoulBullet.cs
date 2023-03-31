@@ -11,6 +11,8 @@ public class SoulBullet : MonoBehaviour, IBullet
 
     private BulletStats bs;
 
+    public BulletStats BS => bs;
+
     public void InitBullet(Transform target, int dmg, float speed, float slowAmount, float slowLength, float stunLength)
     {
         bs = new BulletStats(dmg, speed, slowAmount, slowLength, stunLength);
@@ -51,6 +53,10 @@ public class SoulBullet : MonoBehaviour, IBullet
         }
         else
             currentTarget = null;
+    }
+    public void AddStats(int dmg, float speed, float slowAmount, float slowLength, float stunLength)
+    {
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

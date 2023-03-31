@@ -13,6 +13,7 @@ public class SlimePool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dmgTimer = dmgCd;
         currentLifeTIme = lifeTime;
     }
 

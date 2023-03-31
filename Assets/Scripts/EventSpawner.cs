@@ -44,7 +44,7 @@ public class EventSpawner : MonoBehaviour
             if (currentIteration == 0)
             {
                 currentAllowedEvents--;
-                WaveEvent tempEvent = new WaveEvent(2, WaveEventType.TowerTimer);
+                WaveEvent tempEvent = new WaveEvent(2, WaveEventType.Chest);
                 waveEvents.Add(tempEvent);
             }
             int chestEvents = Random.Range(0, currentAllowedEvents+1);

@@ -304,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 6727258828465660905}
   animator: {fileID: 6727258829841299728}
+  maxHealth: 0
   reward: {fileID: 0}
 --- !u!61 &9822858569453151
 BoxCollider2D:
@@ -343,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac909a485af5f2439b44dba331caa02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 100
   maxMoveSpeed: 0
   dmg: 0
 --- !u!1 &6727258829841299734

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cbc797b6e5880bf4e8c7c73a5fcca083
+guid: ec2d09df477a782459ba48464a2f9316
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Big Ooze (1)_0
+      name: Big Ooze (1) (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4faf72d95600b24f9d8e4ad912af486
-      internalID: 1784377364
+      spriteID: 26632a9b0a9ad864584607ec0006ce9d
+      internalID: -570860885
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Big Ooze (1)_1
+      name: Big Ooze (1) (1)_1
       rect:
         serializedVersion: 2
         x: 0
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab6138a6d563a5940a805b525ef95543
-      internalID: -1398333438
+      spriteID: cab4401126b0dac44b6b166e20049a1e
+      internalID: 1812618056
       vertices: []
       indices: 
       edges: []
@@ -169,8 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Big Ooze (1)_1: -1398333438
-      Big Ooze (1)_0: 1784377364
+      Big Ooze (1) (1)_0: -570860885
+      Big Ooze (1) (1)_1: 1812618056
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

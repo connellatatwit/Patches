@@ -131,4 +131,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0}
   targetPos: {x: 0, y: 0}
-  speed: 10
+  poolPrefab: {fileID: 4942708877671704706, guid: c44830b191c32904091c6b8542e74495, type: 3}
+  speed: 7.5

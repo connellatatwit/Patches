@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sunglassesTracker: {fileID: 8715162861343525014, guid: 6746e279aab027844b0eaf14680c4b29, type: 3}
-  dmgIncrease: 25
+  dmgIncrease: 0.5
   speed: 50
   pivotObject: {fileID: 0}
   sr: {fileID: 4811868153086259470}

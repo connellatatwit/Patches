@@ -7,8 +7,8 @@ public class Chest : MonoBehaviour, NonPlayerHealth
 {
     [SerializeField] Image hpBar;
     [SerializeField] Animator animator;
-    private int maxHealth;
-    private int currentHealth;
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int currentHealth;
     private Transform player;
     [SerializeField] private GameObject reward;
 

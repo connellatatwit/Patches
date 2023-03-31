@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour, IBullet
     private float deathTimer = .5f;
     [SerializeField] LayerMask enemyLayer = (1 << 11);
     private BulletStats bs;
+    public BulletStats BS => bs;
 
     public void InitBullet(Transform target, int dmg, float speed, float slowAmount, float slowLength, float stunLength)
     {

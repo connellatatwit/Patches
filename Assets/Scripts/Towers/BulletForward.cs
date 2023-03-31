@@ -13,6 +13,7 @@ public class BulletForward : MonoBehaviour, IBullet
 
     private Rigidbody2D rb;
     private BulletStats bs;
+    public BulletStats BS => bs;
 
     public void InitBullet(Transform target, int dmg, float speed, float slowAmount, float slowLength, float stunLength)
     {
