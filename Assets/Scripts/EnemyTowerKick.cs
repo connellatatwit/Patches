@@ -10,7 +10,6 @@ public class EnemyTowerKick : MonoBehaviour
     {
         if (collision.gameObject.layer == 7)
         {
-            Debug.Log("Kick Tower");
             StartCoroutine(KickTower(collision.gameObject.GetComponent<Rigidbody2D>()));
         }
     }

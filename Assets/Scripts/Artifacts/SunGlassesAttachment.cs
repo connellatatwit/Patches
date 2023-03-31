@@ -49,7 +49,6 @@ public class SunGlassesAttachment : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
         if(collision.GetComponent<IBullet>() != null)
         {
             collision.GetComponent<IBullet>().BS.dmg += Mathf.RoundToInt(collision.GetComponent<IBullet>().BS.dmg * dmgIncrease);

@@ -10,6 +10,8 @@ public enum EnemyStat
 
 public class EnemyStats : MonoBehaviour
 {
+    [Header("Symbols")]
+    [SerializeField] GameObject slowSymbol;
     [Header("Stats")]
     [SerializeField] int maxHealth;
     private int currentHealth;
@@ -39,6 +41,7 @@ public class EnemyStats : MonoBehaviour
     }
     public float Speed()
     {
+        HandleSymbols();
         if (!stunned)
         {
             float temp;
@@ -63,6 +66,16 @@ public class EnemyStats : MonoBehaviour
         get { return currentDmg; }
     }
 
+    // A little gross but eh, here it is
+    private void HandleSymbols()
+    {
+        if (slowed || currentSpeedReduction != 1)
+        {
+            slowSymbol.SetActive(true);
+        }
+        else
+            slowSymbol.SetActive(false);
+    }
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;

@@ -197,7 +197,6 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 }
                 if(stunTimer <= 0)
                 {
-                    Debug.Log("STUN");
                     enemy.GetComponent<EnemyStats>().Stun(stunLength4);
                 }
             }
@@ -206,7 +205,6 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
         {
             // Reset attack timer
             attackTimer = tS.AttackCd;
-            Debug.Log(tS.AttackCd);
         }
         if( stunTimer <= 0)
             stunTimer = tS.AttackCd*2;
@@ -228,7 +226,6 @@ public class SlowSignTower : MonoBehaviour, IItem, ITower
                 }
                 if (stunTimer <= 0)
                 {
-                    Debug.Log("STUN");
                     enemy.GetComponent<EnemyStats>().Stun(stunLength4);
                 }
             }

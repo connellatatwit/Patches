@@ -107,10 +107,7 @@ public class TowerStats : MonoBehaviour
     }
     public void IncreaseAttackSpeed(float percent)
     {
-        Debug.Log("Added AttackSpeed");
-        Debug.Log("Old Cd " + attackCd);
         attackCd = attackCd * (1 - percent);
-        Debug.Log("new Cd " + attackCd);
     }
     public void IncreaseBulletSpeed(float amount)
     {

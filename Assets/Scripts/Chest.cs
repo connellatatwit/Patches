@@ -25,7 +25,6 @@ public class Chest : MonoBehaviour, NonPlayerHealth
         currentHealth -= bs.dmg;
         if (currentHealth <= 0)
         {
-            Debug.Log("OPEN");
             animator.SetTrigger("Open");
         }
         hpBar.fillAmount = (float)currentHealth / (float)maxHealth;
@@ -37,7 +36,8 @@ public class Chest : MonoBehaviour, NonPlayerHealth
         GameObject item = Instantiate(reward, transform.position, Quaternion.identity);
         StartCoroutine(DieChest(item));
 
-        player.GetComponent<PlayerPointer>().RemoveTarget();
+        if(player != null)
+            player.GetComponent<PlayerPointer>().RemoveTarget();
     }
 
     private IEnumerator DieChest(GameObject item)
