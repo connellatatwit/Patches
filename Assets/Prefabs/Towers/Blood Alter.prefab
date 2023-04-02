@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7352891982597219206}
   - component: {fileID: 7352891982597219201}
-  - component: {fileID: 7358599479250663724}
   - component: {fileID: 8957913665560900934}
   - component: {fileID: 1249564783985651761}
   - component: {fileID: 6597395844895524338}
   - component: {fileID: 5649486863343681738}
+  - component: {fileID: 7358599479250663724}
+  - component: {fileID: 7211384770127917307}
   m_Layer: 7
   m_Name: Blood Alter
   m_TagString: Untagged
@@ -64,28 +65,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2076969, y: 0.9059057}
   m_EdgeRadius: 0
---- !u!114 &7358599479250663724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7352891982597219200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16337884c44f03b49a89f974f510eb72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseRange: 6
-  baseDmg: 10
-  baseAttackCd: 1
-  bulletSpeed: 8
-  baseMaxUpgrades: 3
-  baseCritChance: 5
-  baseCritDamage: 1.2
-  baseSlowAmount: 0.3
-  baseSlowLength: 1
-  baseStunLength: 0
 --- !u!50 &8957913665560900934
 Rigidbody2D:
   serializedVersion: 4
@@ -238,6 +217,54 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &7358599479250663724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7352891982597219200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16337884c44f03b49a89f974f510eb72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseRange: 6
+  baseDmg: 10
+  baseAttackCd: 1
+  bulletSpeed: 8
+  baseMaxUpgrades: 3
+  baseCritChance: 5
+  baseCritDamage: 1.2
+  baseSlowAmount: 0.3
+  baseSlowLength: 1
+  baseStunLength: 0
+--- !u!114 &7211384770127917307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7352891982597219200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97bd62630c34b7546914955e7e6a4f3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Blood Alter
+  itemDescription: Takes i blood to summon Friends
+  itemSprite: {fileID: -1089069775, guid: 38d93eab24fc3954aa59be9771b0b9d0, type: 3}
+  animator: {fileID: 5649486863343681738}
+  bloodSpawnerPrefab: {fileID: 6860087416877283583, guid: b0aeec365b3e1be4c9189866cafc617f, type: 3}
+  firstSpawnPrefab: {fileID: 2249720140889197181, guid: 54cb055494747d5468f9dbe412479e3a, type: 3}
+  slowIncrease2: 0
+  dmg2: 0
+  atkCD2: 0
+  slowIncrease3: 0
+  rangeIncrease3: 0
+  stunLength4: 1
+  dmg5: 0
+  atckCd5: 0
 --- !u!1 &7352891982741204275
 GameObject:
   m_ObjectHideFlags: 0

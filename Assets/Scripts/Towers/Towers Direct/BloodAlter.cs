@@ -13,10 +13,11 @@ public class BloodAlter : MonoBehaviour, ITower, IItem
     //private List<IArtifact> artifacts;
 
     [Header("Sprites")]
-    [SerializeField] SpriteRenderer sr;
-    [SerializeField] List<Sprite> levelImages;
+    [SerializeField] Animator animator;
     [Header("Level 1")]
     private BulletStats bs;
+    [SerializeField] GameObject bloodSpawnerPrefab;
+    [SerializeField] GameObject firstSpawnPrefab;
     [Header("Level 2")]
     [SerializeField] float slowIncrease2;
     [SerializeField] int dmg2;
@@ -51,6 +52,12 @@ public class BloodAlter : MonoBehaviour, ITower, IItem
     public float StartTime => tS.StartTime;
     public int Level => currentLevel;
 
+    private void Start()
+    {
+        /*
+        GameObject spawner = Instantiate(bloodSpawnerPrefab, RandomPointOnCircleEdge(3f), Quaternion.identity);
+        spawner.GetComponent<BloodSPawner>().SetSpawn(firstSpawnPrefab, 2);*/
+    }
     public void LevelUp()
     {
         Debug.Log("Leveled up Pea shooter");
@@ -60,7 +67,7 @@ public class BloodAlter : MonoBehaviour, ITower, IItem
 
     private void HandleLevelUp()
     {
-        //animator.SetInteger("Level", currentLevel);
+        animator.SetInteger("Level", currentLevel);
         if (currentLevel == 2)
         {
 
@@ -128,5 +135,13 @@ public class BloodAlter : MonoBehaviour, ITower, IItem
     public void BeingHeld(bool held)
     {
 
+    }
+
+    private Vector3 RandomPointOnCircleEdge(float radius)
+    {
+        var vector2 = Random.insideUnitCircle.normalized * radius;
+        Vector3 newPos = new Vector3(vector2.x, vector2.y, 0);
+        newPos += transform.position;
+        return newPos;
     }
 }
