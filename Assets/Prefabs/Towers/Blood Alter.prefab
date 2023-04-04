@@ -231,7 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseRange: 6
   baseDmg: 10
-  baseAttackCd: 1
+  baseAttackCd: 10
   bulletSpeed: 8
   baseMaxUpgrades: 3
   baseCritChance: 5
@@ -257,14 +257,6 @@ MonoBehaviour:
   animator: {fileID: 5649486863343681738}
   bloodSpawnerPrefab: {fileID: 6860087416877283583, guid: b0aeec365b3e1be4c9189866cafc617f, type: 3}
   firstSpawnPrefab: {fileID: 2249720140889197181, guid: 54cb055494747d5468f9dbe412479e3a, type: 3}
-  slowIncrease2: 0
-  dmg2: 0
-  atkCD2: 0
-  slowIncrease3: 0
-  rangeIncrease3: 0
-  stunLength4: 1
-  dmg5: 0
-  atckCd5: 0
 --- !u!1 &7352891982741204275
 GameObject:
   m_ObjectHideFlags: 0

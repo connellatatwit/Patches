@@ -19,23 +19,16 @@ public class BloodAlter : MonoBehaviour, ITower, IItem
     [SerializeField] GameObject bloodSpawnerPrefab;
     [SerializeField] GameObject firstSpawnPrefab;
     [Header("Level 2")]
-    [SerializeField] float slowIncrease2;
-    [SerializeField] int dmg2;
-    [SerializeField] float atkCD2;
     [Header("Level 3")]
-    [SerializeField] float slowIncrease3;
-    [SerializeField] float rangeIncrease3;
     [Header("Level 4")]
-    [SerializeField] float stunLength4 = 1; // length of being stunned
-    private float stunTimer;
     [Header("Level 5")]
-    [SerializeField] int dmg5;
-    [SerializeField] float atckCd5;
 
     [Header("Level 2")]
     [Header("Level 3")]
     [Header("Level 4")]
     [Header("Level 5")]
+
+    private float attackTimer = 1f;
 
     private TowerStats tS;
 
@@ -57,10 +50,10 @@ public class BloodAlter : MonoBehaviour, ITower, IItem
         /*
         GameObject spawner = Instantiate(bloodSpawnerPrefab, RandomPointOnCircleEdge(3f), Quaternion.identity);
         spawner.GetComponent<BloodSPawner>().SetSpawn(firstSpawnPrefab, 2);*/
+        tS = GetComponent<TowerStats>();
     }
     public void LevelUp()
     {
-        Debug.Log("Leveled up Pea shooter");
         currentLevel++;
         HandleLevelUp();
     }
@@ -88,31 +81,38 @@ public class BloodAlter : MonoBehaviour, ITower, IItem
 
     private void Update()
     {
+        Level1Effect();
         if (currentLevel == 1)
         {
-            Level1Effect();
+            //Level1Effect();
         }
         else if (currentLevel == 2)
         {
-            Level2Effect();
+            //Level2Effect();
         }
         else if (currentLevel == 3)
         {
-            Level3Effect();
+            //Level3Effect();
         }
         else if (currentLevel == 4)
         {
-            Level4Effect();
+            //Level4Effect();
         }
         else if (currentLevel == 5)
         {
-            Level5Effect();
+            //Level5Effect();
         }
     }
 
     private void Level1Effect()
     {
+        attackTimer -= Time.deltaTime;
 
+        if(attackTimer <= 0)
+        {
+            Spawn();
+            attackTimer = tS.AttackCd;
+        }
     }
     private void Level2Effect()
     {
@@ -137,6 +137,11 @@ public class BloodAlter : MonoBehaviour, ITower, IItem
 
     }
 
+    private void Spawn()
+    {
+        GameObject spawner = Instantiate(bloodSpawnerPrefab, RandomPointOnCircleEdge(3f), Quaternion.identity);
+        spawner.GetComponent<BloodSPawner>().SetSpawn(firstSpawnPrefab, 1);
+    }
     private Vector3 RandomPointOnCircleEdge(float radius)
     {
         var vector2 = Random.insideUnitCircle.normalized * radius;
