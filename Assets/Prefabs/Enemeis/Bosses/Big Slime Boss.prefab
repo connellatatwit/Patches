@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 292133003880541405}
   - component: {fileID: 2392649219565100850}
   - component: {fileID: -803592460677517488}
+  - component: {fileID: 7630218790794834063}
   m_Layer: 11
   m_Name: Big Slime Boss
   m_TagString: Untagged
@@ -369,6 +370,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossChest: {fileID: 4356956272398363747, guid: 589075ddd247f6f4e9547d187abcb7ec, type: 3}
+--- !u!114 &7630218790794834063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5145509838102698189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e46ea61d2b35f443b9c01eeb95e4721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sr: {fileID: 5145509838774883887}
+  flashMat: {fileID: 2100000, guid: 6038f4bc1bd44af4384b5d998910ad1c, type: 2}
+  flashTime: 0.125
 --- !u!1 &5145509838774883885
 GameObject:
   m_ObjectHideFlags: 0

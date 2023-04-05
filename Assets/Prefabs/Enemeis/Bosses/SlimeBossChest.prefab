@@ -271,7 +271,7 @@ MonoBehaviour:
   animator: {fileID: 517660535390876838}
   maxHealth: 100
   currentHealth: 100
-  reward: {fileID: 5309707010584753242, guid: 13f18e9cc80e207418ef566ff760b212, type: 3}
+  reward: {fileID: 3323080623614744495, guid: 6ea39af2ed165154a9959da55025a06f, type: 3}
 --- !u!61 &6992374089975635510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac909a485af5f2439b44dba331caa02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowSymbol: {fileID: 0}
   maxHealth: 100
   maxMoveSpeed: 0
   dmg: 0

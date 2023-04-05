@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 7206028158363990122}
   - component: {fileID: 8284639546037255091}
   - component: {fileID: 4181029675301145234}
+  - component: {fileID: -4774350057480772089}
   m_Layer: 11
   m_Name: Gork
   m_TagString: Untagged
@@ -339,6 +340,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &-4774350057480772089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3933522976450043547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e46ea61d2b35f443b9c01eeb95e4721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sr: {fileID: 3933522976048386169}
+  flashMat: {fileID: 2100000, guid: 6038f4bc1bd44af4384b5d998910ad1c, type: 2}
+  flashTime: 0.125
 --- !u!1 &7917269304434928542
 GameObject:
   m_ObjectHideFlags: 0

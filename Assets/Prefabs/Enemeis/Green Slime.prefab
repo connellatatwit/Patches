@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7979215220891049361}
   - component: {fileID: 1080812563464656021}
   - component: {fileID: 7693479512124511400}
+  - component: {fileID: 3669312028793709063}
   m_Layer: 11
   m_Name: Green Slime
   m_TagString: Untagged
@@ -156,6 +157,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &3669312028793709063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185711573124738140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e46ea61d2b35f443b9c01eeb95e4721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sr: {fileID: 185711573259559614}
+  flashMat: {fileID: 2100000, guid: 6038f4bc1bd44af4384b5d998910ad1c, type: 2}
+  flashTime: 0.125
 --- !u!1 &185711573259559612
 GameObject:
   m_ObjectHideFlags: 0

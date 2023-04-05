@@ -24,6 +24,7 @@ public class EnemyStats : MonoBehaviour
     private bool stunned = false;
     private bool slowed = false;
     private float slowAmount = 0f;
+    private Coroutine slowedRoutine;
 
     private void Start()
     {
@@ -103,7 +104,10 @@ public class EnemyStats : MonoBehaviour
     {
         slowAmount = 1 - amount;
         slowed = true;
-        StartCoroutine(WaitForSlow(length));
+        if (slowedRoutine != null)
+            StopCoroutine(slowedRoutine);
+
+        slowedRoutine = StartCoroutine(WaitForSlow(length));
     }
     private IEnumerator WaitForStun(float length)
     {
