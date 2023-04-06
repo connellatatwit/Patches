@@ -31,7 +31,6 @@ public class FlashAnim : MonoBehaviour
 
     public IEnumerator FlashRoutine()
     {
-        Debug.Log("FLASHING");
         sr.material = flashMat;
         yield return new WaitForSeconds(flashTime);
         sr.material = originalMat;
