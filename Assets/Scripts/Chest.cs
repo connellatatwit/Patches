@@ -41,6 +41,8 @@ public class Chest : MonoBehaviour, NonPlayerHealth
 
         if(player != null)
             player.GetComponent<PlayerPointer>().RemoveTarget();
+
+        GameManager.instance.SetArtifactText(item.GetComponent<IArtifact>().ArtifactName);
     }
 
     private IEnumerator DieChest(GameObject item)

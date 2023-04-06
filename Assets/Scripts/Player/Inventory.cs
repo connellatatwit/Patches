@@ -73,7 +73,8 @@ public class Inventory : MonoBehaviour
     private void AddHeldIcon(GameObject item)
     {
         GameObject temp = Instantiate(heldIconPrefab, heldIconparent);
-        temp.GetComponent<HeldIcon>().InitIcon(item.GetComponent<IItem>().ItemSprite);
+        if(temp.GetComponent<HeldIcon>() != null)
+            temp.GetComponent<HeldIcon>().InitIcon(item.GetComponent<IItem>().ItemSprite);
     }
     private void RemoveHeldIcon()
     {

@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5309707010584753244}
   - component: {fileID: 2103423606203053089}
   m_Layer: 8
-  m_Name: SunGlasses
+  m_Name: Cool Sunglasses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,4 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d128024a1790d0e46a8ce24d5945e4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgIncrease: 0
   sunGlassesAttachmentPrefab: {fileID: 1561312602841214473, guid: 5278334947250a142b09322ea626e49f, type: 3}
+  artName: Cool Sunglasses

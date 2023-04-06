@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowAmount: 0.3
   slimeAttachmentPrefab: {fileID: 8149063865960821413, guid: 68f3c60715f26004d8c797fe451f2dc6, type: 3}
+  artName: Slime Ball
 --- !u!1 &3323080624966260715
 GameObject:
   m_ObjectHideFlags: 0

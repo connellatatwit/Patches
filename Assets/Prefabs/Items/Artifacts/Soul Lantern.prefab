@@ -179,3 +179,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soulLanternAttachment: {fileID: 6055220860361647754, guid: d28831a4ef3ca924db65e07e00bdb320, type: 3}
+  artName: Soul Lantern

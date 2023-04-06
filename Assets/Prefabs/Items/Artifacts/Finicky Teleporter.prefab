@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2761956861794535609}
   - component: {fileID: 4061040373158558232}
   m_Layer: 8
-  m_Name: Finick Teleporter
+  m_Name: Finicky Teleporter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,3 +179,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   telePrefab: {fileID: 4529320437357571001, guid: 16d6135943e935b44828318b85bf775c, type: 3}
+  artName: Finicky Teleporter

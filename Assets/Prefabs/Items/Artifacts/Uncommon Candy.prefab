@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e774f05f9c5bfbb4aad7510277d6399a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  artName: Uncommon Candy
 --- !u!1 &1287967999448851123
 GameObject:
   m_ObjectHideFlags: 0

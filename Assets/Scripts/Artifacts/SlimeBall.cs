@@ -7,6 +7,10 @@ public class SlimeBall : MonoBehaviour, IArtifact
     [SerializeField] float slowAmount;
     [SerializeField] GameObject slimeAttachmentPrefab;
 
+    public string artName;
+
+    public string ArtifactName => artName;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<ITower>() != null)

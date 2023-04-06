@@ -15,6 +15,8 @@ public class PickUpObject : MonoBehaviour
     [SerializeField] LayerMask objectLayer = (1 << 8);
 
     private Inventory playerInventory;
+
+    private bool selecting;
     private void Start()
     {
         playerInventory = GetComponent<Inventory>();
@@ -22,7 +24,7 @@ public class PickUpObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale != 0)
+        if (!selecting)
         {
             if (Input.GetKeyDown(KeyCode.J))
             {
@@ -141,5 +143,10 @@ public class PickUpObject : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(indicator.position, new Vector3(1, 1));
+    }
+
+    public void StopControls(bool stop)
+    {
+        selecting = stop;
     }
 }

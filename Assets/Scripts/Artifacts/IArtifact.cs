@@ -6,4 +6,6 @@ public interface IArtifact
 {
     // NEEDS TO GET RID OF THE IMAGE when it is attached
     public void AttachArtifact(GameObject tower);
+
+    public string ArtifactName { get; }
 }

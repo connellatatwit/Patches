@@ -5,6 +5,10 @@ using UnityEngine;
 public class FinickyTeleporter : MonoBehaviour, IArtifact
 {
     [SerializeField] GameObject telePrefab;
+
+    public string artName;
+
+    public string ArtifactName => artName;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<ITower>() != null)

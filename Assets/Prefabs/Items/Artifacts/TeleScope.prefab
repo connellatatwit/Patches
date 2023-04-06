@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1131796974010493280}
   - component: {fileID: 1329230150487857776}
   m_Layer: 8
-  m_Name: Range Indicator
+  m_Name: TeleScope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,3 +180,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scopeAttachment: {fileID: 6686353316176803813, guid: a0fe7b7048f1dd64eba26fec2eb34ba1, type: 3}
   rangeIncrease: 10
+  artName: 1000 GP?

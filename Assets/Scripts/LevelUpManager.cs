@@ -73,6 +73,14 @@ public class LevelUpManager : MonoBehaviour
             newItem.GetComponent<PassiveStatItem>().Init();
             player.GetComponent<Inventory>().AddStatToTurrets(newItem.GetComponent<PassiveStatItem>());
         }
+
+        StartCoroutine(WaitToGiveControl());
+    }
+
+    private IEnumerator WaitToGiveControl()
+    {
+        yield return new WaitForEndOfFrame();
+        player.GetComponent<PickUpObject>().StopControls(false);
     }
     public void LevelUp(bool a5)
     {
@@ -93,6 +101,8 @@ public class LevelUpManager : MonoBehaviour
             currentSelectedItem = 0;
             selecting = true;
         }
+        if(player != null)
+            player.GetComponent<PickUpObject>().StopControls(true);
     }
 
     /*public void SetItemPanels()
