@@ -420,6 +420,8 @@ MonoBehaviour:
   hpBar: {fileID: 7172052668269333983}
   loseScreen: {fileID: 0}
   clock: {fileID: 0}
+  healthRegen: 1
+  regenCd: 20
 --- !u!114 &4387324769702854457
 MonoBehaviour:
   m_ObjectHideFlags: 0
